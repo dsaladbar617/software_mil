@@ -1,20 +1,30 @@
-import connection from "../db.js";
-import shops from "../model.js";
+// import connection from "../db.js";
+import shops from "../shopModel.js";
 
 const addShop = (req, res) => {
 	let data = req.body;
-
 	shops.create(data);
-
 	res.status(200).send(`you have added ${data.name}`);
+};
+
+const updateShop = async (req, res) => {
+	let data = req.body;
+	let filter = { name: data.name };
+	let found = await shops.findOneAndUpdate(filter, data);
+	console.log(found);
+	res.status(200).send(`You have updated ${found.name}`);
 };
 
 const getShops = async (req, res) => {
 	let data = await shops.find();
-
-	console.log(data);
-
 	res.status(200).json(data);
 };
 
-export { addShop, getShops };
+const removeShop = async (req, res) => {
+	let data = req.body;
+	let deleted = await shops.deleteOne({ name: data.name });
+	console.log(deleted);
+	res.status(200).send(`You have removed ${deleted.deletedCount} entry`);
+};
+
+export { addShop, getShops, updateShop, removeShop };
