@@ -1,6 +1,8 @@
-import { TextInput, createStyles } from "@mantine/core";
-import { useState } from "react";
-import styles from "./Header.module.css";
+import { TextInput, createStyles } from '@mantine/core';
+import { useState, useContext } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { ShopContext } from '../ShopContext';
+import styles from '../styles/Header.module.css';
 
 const useStyles = createStyles(() => ({
 	root: {
@@ -12,21 +14,41 @@ const useStyles = createStyles(() => ({
 }));
 
 const Header = () => {
+	const location = useLocation();
+	const { setters } = useContext(ShopContext);
+	const nav = useNavigate();
 	const { classes } = useStyles();
-	const [searchValue, setSearchValue] = useState("");
+	const [value, setValue] = useState('');
+
+	const handleUserInput = (e) => {
+		setValue(e.target.value);
+		setters.setSearchValue(e.target.value);
+	};
+
 	return (
 		<>
 			<div className={styles.head}>
-				<h1>Sorftwair Shoops</h1>
+				<h1
+					className={styles.title}
+					onClick={() => {
+						nav('/');
+					}}>
+					Sorftwair Shoops
+				</h1>
 			</div>
-			<div className={styles.search}>
-				<TextInput
-					placeholder="Search..."
-					value={searchValue}
-					onChange={(event) => setSearchValue(event.currentTarget.value)}
-					styles={{ root: classes.root, label: classes.label }}
-				/>
-			</div>
+			{location.pathname.includes('shop') ? null : (
+				<div className={styles.search}>
+					<TextInput
+						placeholder="Search..."
+						value={value}
+						// onChange={(event) => {
+						// 	setters.setSearchValue(event.currentTarget.value);
+						// }}
+						onChange={handleUserInput}
+						styles={{ root: classes.root, label: classes.label }}
+					/>
+				</div>
+			)}
 		</>
 	);
 };

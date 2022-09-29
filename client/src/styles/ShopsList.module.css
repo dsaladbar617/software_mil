@@ -1,0 +1,33 @@
+.shop_list {
+	margin-top: 10px;
+	margin-left: 1rem;
+	margin-right: 1rem;
+	display: grid;
+	gap: 0.5rem;
+}
+
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+li {
+	cursor: pointer;
+}
+
+@media (min-width: 600px) {
+	.shop_list {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (min-width: 900px) {
+	.shop_list {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.shops {
+	margin: 5px;
+	padding: 1rem;
+}
