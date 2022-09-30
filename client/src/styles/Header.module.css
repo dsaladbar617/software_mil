@@ -10,11 +10,18 @@
 }
 
 .head {
-	background-color: #344e41;
-	color: #dad7cd;
+	background-color: #1b263b;
+	color: #e0e1dd;
 	height: 20vh;
 	width: 100%;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+}
+
+.theme_button {
+	position: absolute;
+	right: 1rem;
+	top: 1rem;
 }

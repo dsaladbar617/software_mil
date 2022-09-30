@@ -11,8 +11,13 @@ ul {
 	padding-left: 0px;
 }
 
-li {
+.cards {
 	cursor: pointer;
+	transition: all 1s ease;
+}
+
+.cards:hover {
+	transform: scale(1.05);
 }
 
 @media (min-width: 600px) {

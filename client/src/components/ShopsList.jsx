@@ -29,7 +29,7 @@ const ShopsList = () => {
 					}
 				})
 				.map((shop, index) => (
-					<li key={index}>
+					<li className={styles.cards} key={index}>
 						<TestCard className={styles.shops} shop={shop} />
 					</li>
 				))}

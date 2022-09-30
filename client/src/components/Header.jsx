@@ -1,8 +1,10 @@
-import { TextInput, createStyles } from '@mantine/core';
+import { TextInput, createStyles, Button } from '@mantine/core';
 import { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ShopContext } from '../ShopContext';
 import styles from '../styles/Header.module.css';
+import { IconSun, IconMoon } from '@tabler/icons';
+import { useMantineColorScheme } from '@mantine/core';
 
 const useStyles = createStyles(() => ({
 	root: {
@@ -14,6 +16,8 @@ const useStyles = createStyles(() => ({
 }));
 
 const Header = () => {
+	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+
 	const location = useLocation();
 	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
@@ -35,6 +39,13 @@ const Header = () => {
 					}}>
 					Sorftwair Shoops
 				</h1>
+				<Button className={styles.theme_button} onClick={toggleColorScheme}>
+					{colorScheme === 'dark' ? (
+						<IconSun size={18} />
+					) : (
+						<IconMoon size={18} />
+					)}
+				</Button>
 			</div>
 			{location.pathname.includes('shop') ? null : (
 				<div className={styles.search}>
