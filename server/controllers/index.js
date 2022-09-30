@@ -1,5 +1,5 @@
 // import connection from "../db.js";
-import shops from "../shopModel.js";
+import shops from '../shopModel.js';
 
 const addShop = (req, res) => {
 	let data = req.body;
@@ -27,4 +27,20 @@ const removeShop = async (req, res) => {
 	res.status(200).send(`You have removed ${deleted.deletedCount} entry`);
 };
 
-export { addShop, getShops, updateShop, removeShop };
+const addProject = async (req, res) => {
+	let data = req.body;
+	let updated = await shops.findOneAndUpdate(
+		{ name: data.name },
+		{
+			$push: {
+				projects: data.project
+			}
+		}
+	);
+
+	console.log(updated);
+
+	res.status(200).send('yuhhhhhh');
+};
+
+export { addShop, getShops, updateShop, removeShop, addProject };

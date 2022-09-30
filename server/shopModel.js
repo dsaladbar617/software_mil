@@ -6,7 +6,8 @@ let shop = new Schema({
 	name: String,
 	desc: String,
 	projects: Array,
-	img: String
+	img: String,
+	location: String
 });
 
 export default mongoose.model("shops", shop);
