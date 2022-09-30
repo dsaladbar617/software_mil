@@ -17,17 +17,22 @@ const ShopDetail = () => {
 
 	return (
 		<>
-			<div className={styles.container}>
-				<h1 className={styles.name}>{name}</h1>
-				<h3>{`Description: ${desc}`}</h3>
-				<h3>{`Location: ${location}`}</h3>
+			<div className={styles.allcontain}>
+				<img src="/Conjure.png" alt="Shop Logo" />
+				<div className={styles.container}>
+					<h1 className={styles.name}>{name}</h1>
+					<h3>{`Description: ${desc}`}</h3>
+					<h3>{`Location: ${location}`}</h3>
+				</div>
+			</div>
+			<div className={styles.project_container}>
 				<div className={styles.projects}>
 					<h2>Projects:</h2>
 					<ul>
 						{projects.map((project, index) => (
 							<li key={index}>
-								<h2>{project.name}</h2>
-								<h3>Tags</h3>
+								<h3>{project.name}</h3>
+								<p>Tags:</p>
 								<ul>
 									{project.tags.map((tag, index) => (
 										<li key={index}>{tag}</li>
@@ -38,7 +43,11 @@ const ShopDetail = () => {
 										<li key={index}>{item}</li>
 									))}
 								</ul>
+								<br />
+								<p>Link:</p>
 								<a href={project.proj_link}>Github Repo</a>
+								<br />
+								<br />
 								<p>{project.short_desc}</p>
 							</li>
 						))}
