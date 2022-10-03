@@ -1,7 +1,8 @@
-import { Card, Image, Text, Group, createStyles } from '@mantine/core';
+import { Card, Image, createStyles, Overlay, Box, Text } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ShopContext } from '../ShopContext';
+import styles from '../styles/TestCard.module.css';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -13,36 +14,36 @@ const TestCard = ({ shop }) => {
 	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
-	const { desc, name, location } = shop;
+	const { name, img } = shop;
+
 	return (
-		<Card
-			onClick={() => {
-				nav(`/shop/${name}`);
-				setters.setSelectedShop(shop);
-			}}
-			shadow="xl"
-			p="lg"
-			radius="lg"
-			withBorder
-			style={{ root: classes.root }}>
-			<Card.Section>
-				<Image
-					src="/Conjure.png"
-					height={185}
-					fit="contain"
-					alt="Conjure Flame"
-				/>
-			</Card.Section>
-
-			<Group position="apart" mt="md" mb="xs">
-				<Text weight={500}>{name}</Text>
-				<Text weight={400}>{location}</Text>
-			</Group>
-
-			<Text size="sm" color="dimmed">
-				{desc}
-			</Text>
-		</Card>
+		<Box>
+			<Card
+				onClick={() => {
+					nav(`/shop/${name}`);
+					setters.setSelectedShop(shop);
+				}}
+				shadow="xl"
+				radius="lg"
+				withBorder
+				style={{ root: classes.root }}>
+				<Box
+					className={styles.ar_image}
+					sx={{
+						padding: 10,
+						textAlign: 'center'
+					}}>
+					<Image
+						className={styles.article_image}
+						src={`/${img}.png`}
+						height={285}
+						radius={250}
+						fit="contain"
+						alt={`${name}'s logo`}></Image>
+					<p className={styles.name}>{name}</p>
+				</Box>
+			</Card>
+		</Box>
 	);
 };
 

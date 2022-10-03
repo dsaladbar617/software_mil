@@ -6,7 +6,7 @@ import styles from '../styles/ShopDetail.module.css';
 
 const ShopDetail = () => {
 	const { values } = useContext(ShopContext);
-	const { name, desc, projects, location } = values.selectedShop;
+	const { name, desc, projects, location, img } = values.selectedShop;
 	const nav = useNavigate();
 
 	useEffect(() => {
@@ -18,7 +18,7 @@ const ShopDetail = () => {
 	return (
 		<>
 			<div className={styles.allcontain}>
-				<img src="/Conjure.png" alt="Shop Logo" />
+				<img src={`/${img}.png`} alt="Shop Logo" />
 				<div className={styles.container}>
 					<h1 className={styles.name}>{name}</h1>
 					<h3>{`Description: ${desc}`}</h3>

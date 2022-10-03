@@ -13,12 +13,13 @@ ul {
 
 .cards {
 	cursor: pointer;
-	transition: all 1s ease;
+	/* transition: all 1s ease; */
 }
 
-.cards:hover {
-	transform: scale(1.05);
-}
+/* .cards:hover {
+	transform: scale(1.025
+	);
+} */
 
 @media (min-width: 600px) {
 	.shop_list {
