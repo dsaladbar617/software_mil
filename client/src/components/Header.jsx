@@ -1,10 +1,15 @@
-import { TextInput, createStyles, Button } from '@mantine/core';
+import {
+	TextInput,
+	createStyles,
+	Button,
+	Container,
+	useMantineColorScheme
+} from '@mantine/core';
 import { useState, useContext } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ShopContext } from '../ShopContext';
 import styles from '../styles/Header.module.css';
-import { IconSun, IconMoon } from '@tabler/icons';
-import { useMantineColorScheme } from '@mantine/core';
+import { IconSun, IconMoon, IconChevronLeft, IconAnkh } from '@tabler/icons';
 
 const useStyles = createStyles(() => ({
 	root: {
@@ -30,37 +35,49 @@ const Header = () => {
 	};
 
 	return (
-		<>
-			<div className={styles.head}>
+		<div className={styles.sticky}>
+			<Container className={styles.head}>
+				{location.pathname.includes('shop') ? (
+					<Button
+						color="gray"
+						className={styles.back}
+						onClick={() => {
+							nav('/');
+						}}>
+						{' '}
+						<IconChevronLeft size={18} />{' '}
+					</Button>
+				) : null}
 				<h1
 					className={styles.title}
 					onClick={() => {
 						nav('/');
 					}}>
-					Sorftwair Shoops
+					<IconAnkh size={24} /> Sorftwair Shoops <IconAnkh size={24} />
 				</h1>
-				<Button className={styles.theme_button} onClick={toggleColorScheme}>
+				<Button
+					color="gray"
+					className={styles.theme_button}
+					onClick={toggleColorScheme}>
 					{colorScheme === 'dark' ? (
 						<IconSun size={18} />
 					) : (
 						<IconMoon size={18} />
 					)}
 				</Button>
-			</div>
+			</Container>
+
 			{location.pathname.includes('shop') ? null : (
 				<div className={styles.search}>
 					<TextInput
 						placeholder="Search..."
 						value={value}
-						// onChange={(event) => {
-						// 	setters.setSearchValue(event.currentTarget.value);
-						// }}
 						onChange={handleUserInput}
 						styles={{ root: classes.root, label: classes.label }}
 					/>
 				</div>
 			)}
-		</>
+		</div>
 	);
 };
 

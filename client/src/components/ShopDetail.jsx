@@ -1,60 +1,76 @@
 import { useContext } from 'react';
 import { ShopContext } from '../ShopContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import styles from '../styles/ShopDetail.module.css';
+import axios from 'axios';
+import { Card, useMantineTheme, createStyles } from '@mantine/core';
+import toast, { Toaster } from 'react-hot-toast';
+
+const useStyles = createStyles((theme) => ({
+	root: {
+		backgroundColor: theme.colors.gray
+	}
+}));
 
 const ShopDetail = () => {
-	const { values } = useContext(ShopContext);
-	const { name, desc, projects, location, img } = values.selectedShop;
-	const nav = useNavigate();
+	const { values, setters } = useContext(ShopContext);
+	const loc = useLocation();
+	const { name, desc, location, img, contact } = values.selectedShop;
+	const theme = useMantineTheme();
 
 	useEffect(() => {
 		if (values.selectedShop.name === '') {
-			nav('/');
+			let url = loc.pathname.replace('/shop/', '');
+			axios.get(`http://localhost:8080/api/get/${url}`).then((res) => {
+				console.log(res.data[0]);
+				setters.setSelectedShop(res.data[0]);
+			});
 		}
 	}, []);
 
+	const notify = () => {
+		let color =
+			theme.colorScheme === 'dark'
+				? { back: '#373A40', front: '#F8F9FA' }
+				: { back: '#F8F9FA', front: '#373A40' };
+
+		toast('Contact Copied!', {
+			duration: 1000,
+			position: 'bottom-center',
+			style: {
+				background: `${color.back}`,
+				color: `${color.front}`
+			}
+		});
+	};
+
+	const { classes } = useStyles();
+
 	return (
-		<>
-			<div className={styles.allcontain}>
+		<div className={styles.scroll}>
+			<Card style={{ root: classes.root }} className={styles.allcontain}>
+				<h1 className={styles.name}>{name}</h1>
 				<img src={`/${img}.png`} alt="Shop Logo" />
-				<div className={styles.container}>
-					<h1 className={styles.name}>{name}</h1>
-					<h3>{`Description: ${desc}`}</h3>
-					<h3>{`Location: ${location}`}</h3>
+				<h3
+					onClick={(e) => {
+						notify();
+						navigator.clipboard.writeText(
+							e.currentTarget.innerText.replace('Contact: ', '')
+						);
+					}}>{`Contact: ${contact}`}</h3>
+				<Toaster />
+			</Card>
+
+			<Card style={{ root: classes.root }} className={styles.desc_container}>
+				<div>
+					<h3>{`Location:`}</h3>
+					<p className="center">{location}</p>
+					<h3>{`Description:`}</h3>
+					<p>{desc}</p>
 				</div>
-			</div>
-			<div className={styles.project_container}>
-				<div className={styles.projects}>
-					<h2>Projects:</h2>
-					<ul>
-						{projects.map((project, index) => (
-							<li key={index}>
-								<h3>{project.name}</h3>
-								<p>Tags:</p>
-								<ul>
-									{project.tags.map((tag, index) => (
-										<li key={index}>{tag}</li>
-									))}
-								</ul>
-								<ul>
-									{project.lang.map((item, index) => (
-										<li key={index}>{item}</li>
-									))}
-								</ul>
-								<br />
-								<p>Link:</p>
-								<a href={project.proj_link}>Github Repo</a>
-								<br />
-								<br />
-								<p>{project.short_desc}</p>
-							</li>
-						))}
-					</ul>
-				</div>
-			</div>
-		</>
+			</Card>
+		</div>
 	);
 };
 

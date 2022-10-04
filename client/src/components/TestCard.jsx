@@ -1,4 +1,4 @@
-import { Card, Image, createStyles, Overlay, Box, Text } from '@mantine/core';
+import { Card, Image, createStyles, Box } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { ShopContext } from '../ShopContext';
@@ -6,7 +6,9 @@ import styles from '../styles/TestCard.module.css';
 
 const useStyles = createStyles((theme) => ({
 	root: {
-		backgroundColor: theme.colors.gray
+		backgroundColor: theme.colors.gray,
+		color: theme.black
+		// maxWidth: 250
 	}
 }));
 
@@ -37,7 +39,6 @@ const TestCard = ({ shop }) => {
 						className={styles.article_image}
 						src={`/${img}.png`}
 						height={285}
-						radius={250}
 						fit="contain"
 						alt={`${name}'s logo`}></Image>
 					<p className={styles.name}>{name}</p>

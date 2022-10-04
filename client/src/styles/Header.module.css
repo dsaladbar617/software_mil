@@ -10,7 +10,7 @@
 }
 
 .head {
-	background-color: #1b263b;
+	background-color: #2c0735;
 	color: #e0e1dd;
 	height: 20vh;
 	width: 100%;
@@ -20,8 +20,19 @@
 	justify-content: center;
 }
 
+.sticky {
+	position: sticky;
+	top: 0;
+}
+
 .theme_button {
 	position: absolute;
 	right: 1rem;
+	top: 1rem;
+}
+
+.back {
+	position: absolute;
+	left: 1rem;
 	top: 1rem;
 }

@@ -5,14 +5,8 @@ import { ShopProvider } from './ShopContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ShopsList from './components/ShopsList';
 import ShopDetail from './components/ShopDetail';
-import {
-	MantineProvider,
-	ColorSchemeProvider,
-	colorScheme
-} from '@mantine/core';
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
-
-// import { useState } from 'react';
 
 function App() {
 	const [colorScheme, setColorScheme] = useLocalStorage({
@@ -30,6 +24,7 @@ function App() {
 			<MantineProvider
 				theme={{ colorScheme }}
 				withGlobalStyles
+				withCSSVariables
 				withNormalizeCSS>
 				<ShopProvider>
 					<Router>
