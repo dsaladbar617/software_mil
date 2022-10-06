@@ -5,7 +5,9 @@ import {
 	updateShop,
 	removeShop,
 	addProject,
-	findShop
+	findShop,
+	getGitHubRepos,
+	getGitLabRepos
 } from '../controllers/index.js';
 const router = express.Router();
 
@@ -15,5 +17,7 @@ router.route('/api').patch(updateShop);
 router.route('/api').delete(removeShop);
 router.route('/api/projects').patch(addProject);
 router.route('/api/get/:shopName').get(findShop);
+router.route('/api/repos/hub/:username').get(getGitHubRepos);
+router.route('/api/repos/lab/:projectId').get(getGitLabRepos);
 
 export default router;
