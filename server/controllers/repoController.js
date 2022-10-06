@@ -52,10 +52,14 @@ const getGitHubRepos = async (req, res) => {
 			);
 			console.log(typeof finalObj[property]);
 		}
+		let final = Object.entries(finalObj).map((item) => {
+			return { name: item[0], value: item[1] };
+		});
 
-		return finalObj;
+		return final;
 	};
 
+	// res.status(200).json(allLangs);
 	res.status(200).json(totalLang(allLangs));
 };
 
