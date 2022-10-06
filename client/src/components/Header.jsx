@@ -36,7 +36,7 @@ const Header = () => {
 
 	return (
 		<div className={styles.sticky}>
-			<Container className={styles.head}>
+			<div className={styles.head}>
 				{location.pathname.includes('shop') ? (
 					<Button
 						color="gray"
@@ -65,7 +65,7 @@ const Header = () => {
 						<IconMoon size={18} />
 					)}
 				</Button>
-			</Container>
+			</div>
 
 			{location.pathname.includes('shop') ? null : (
 				<div className={styles.search}>

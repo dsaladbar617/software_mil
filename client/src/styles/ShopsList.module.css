@@ -14,6 +14,7 @@ ul {
 
 .cards {
 	cursor: pointer;
+	z-index: 0;
 	/* transition: all 1s ease; */
 }
 

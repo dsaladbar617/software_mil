@@ -7,8 +7,8 @@ import TestCard from './TestCard';
 
 const ShopsList = () => {
 	const { values } = useContext(ShopContext);
+
 	const [shops, setShops] = useState([]);
-	// const [visible, setVisible] = useState(true);
 
 	useEffect(() => {
 		axios.get('http://localhost:8080/api').then((res) => {
@@ -32,7 +32,7 @@ const ShopsList = () => {
 						.flat(3);
 					// .map((elem) => elem.toLowerCase());
 
-					console.log(shop, test);
+					// console.log(shop, test);
 					if (values.searchValue === '') {
 						return shop;
 					} else if (
@@ -51,25 +51,3 @@ const ShopsList = () => {
 };
 
 export default ShopsList;
-
-/*
-<ul className={styles.shop_list}>
-			{shops
-				.filter((shop) => {
-					// console.log(shop);
-					if (values.searchValue === '') {
-						return shop;
-					} else if (
-						shop.name.toLowerCase().includes(values.searchValue.toLowerCase())
-					) {
-						console.log(Object.values(shop));
-						return shop;
-					}
-				})
-				.map((shop, index) => (
-					<li className={styles.cards} key={index}>
-						<TestCard className={styles.shops} shop={shop} />
-					</li>
-				))}
-		</ul>
-		*/

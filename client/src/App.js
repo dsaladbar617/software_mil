@@ -1,5 +1,4 @@
 import './App.css';
-import { useState } from 'react';
 import Header from './components/Header';
 import { ShopProvider } from './ShopContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
