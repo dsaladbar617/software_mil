@@ -5,8 +5,16 @@ import { useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import styles from '../styles/ShopDetail.module.css';
 import axios from 'axios';
-import { Card, useMantineTheme, createStyles } from '@mantine/core';
+import {
+	Card,
+	useMantineTheme,
+	createStyles,
+	Button,
+	Loader
+} from '@mantine/core';
 import toast, { Toaster } from 'react-hot-toast';
+import { IconCaretRight } from '@tabler/icons';
+import { useQuery } from '@tanstack/react-query';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -16,6 +24,7 @@ const useStyles = createStyles((theme) => ({
 
 const ShopDetail = () => {
 	const { values, setters } = useContext(ShopContext);
+	const nav = useNavigate();
 	const loc = useLocation();
 	const [projLang, setProjLang] = useState([]);
 	const { name, desc, location, img, contact } = values.selectedShop;
@@ -30,11 +39,31 @@ const ShopDetail = () => {
 			});
 		}
 
-		axios
-			.get('http://localhost:8080/api/repos/hub/dsaladbar617')
-			.then((res) => setProjLang(res.data))
-			.catch((err) => console.log(err));
+		// if (projLang.length === 0) {
+		// 	axios
+		// 		.get('http://localhost:8080/api/repos/hub/dsaladbar617')
+		// 		.then((res) => {
+		// 			setProjLang(res.data);
+		// 			console.log(res.data);
+		// 			// sessionStorage.setItem('lang_data', res.data);
+		// 		})
+		// 		.catch((err) => console.log(err));
+		// }
 	}, []);
+
+	const { data: langs, isLoading } = useQuery(['langData'], async () => {
+		let returned = await axios
+			.get('http://localhost:8080/api/repos/hub/dsaladbar617')
+			.then((res) => {
+				setProjLang(res.data);
+				// console.log(res.data);
+				return res.data;
+				// sessionStorage.setItem('lang_data', res.data);
+			})
+			.catch((err) => console.log(err));
+
+		return returned;
+	});
 
 	const notify = () => {
 		let color =
@@ -54,6 +83,10 @@ const ShopDetail = () => {
 
 	const { classes } = useStyles();
 
+	// const langData = sessionStorage.getItem('lang_data');
+
+	// console.log(langData);
+
 	return (
 		<div className={styles.scroll}>
 			<Card style={{ root: classes.root }} className={styles.allcontain}>
@@ -67,7 +100,30 @@ const ShopDetail = () => {
 						);
 					}}>{`Contact: ${contact}`}</h3>
 				<Toaster />
-				<ProgressBar data={projLang} />
+				{langs ? (
+					<ProgressBar data={langs} />
+				) : (
+					<Loader
+						sx={{
+							margin: 20
+						}}
+						variant="bars"
+						color="gray"
+					/>
+				)}
+
+				<Button
+					sx={{
+						marginLeft: 'auto',
+						paddingRight: 6
+					}}
+					color="gray"
+					onClick={() => {
+						nav(`${loc.pathname}/projects`);
+					}}>
+					Projects
+					<IconCaretRight style={{ padding: 0, margin: 0 }} />
+				</Button>
 			</Card>
 
 			<Card style={{ root: classes.root }} className={styles.desc_container}>

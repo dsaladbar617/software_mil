@@ -1,16 +1,15 @@
 import styles from '../styles/ProgressBar.module.css';
+import React from 'react';
 
 const ProgressBar = ({ data }) => {
 	let colorArray = [
 		'#FF6633',
-		'#FFB399',
-		'#FF33FF',
-		'#FFFF99',
-		'#00B3E6',
 		'#E6B333',
 		'#3366E6',
+		'#FFFF99',
 		'#999966',
 		'#99FF99',
+		'#00B3E6',
 		'#B34D4D',
 		'#80B300',
 		'#809900',
@@ -26,8 +25,10 @@ const ProgressBar = ({ data }) => {
 		'#B366CC',
 		'#4D8000',
 		'#B33300',
+		'#FFB399',
 		'#CC80CC',
 		'#66664D',
+		'#FF33FF',
 		'#991AFF',
 		'#E666FF',
 		'#4DB3FF',
@@ -59,45 +60,28 @@ const ProgressBar = ({ data }) => {
 		color: colorArray[index]
 	}));
 
-	console.log(test);
+	const bars = test.map((item, index) =>
+		item.value > 1 ? (
+			<div
+				className={styles.bar}
+				style={{
+					backgroundColor: item.color,
+					width: item.value + '%'
+				}}
+				key={index}></div>
+		) : null
+	);
 
-	// const values = test.map((item, index) => (
-	// 	<div
-	// 		className={styles.value}
-	// 		style={{ color: item.color, width: `${item.value}%` }}
-	// 		key={index}>
-	// 		<span>{item.value}%</span>
-	// 	</div>
-	// ));
-
-	// const calibrations = test.map((item, index) => (
-	// 	<div
-	// 		className={styles.graduation}
-	// 		style={{ color: item.color, width: item.value + '%' }}
-	// 		key={index}>
-	// 		<span>|</span>
-	// 	</div>
-	// ));
-
-	// TODO: If percentage is under 1 dont add to the bar
-	const bars = test.map((item, index) => (
-		<div
-			className={styles.bar}
-			style={{
-				backgroundColor: item.color,
-				width: item.value + '%'
-			}}
-			key={index}></div>
-	));
-
-	const legends = test.map((item, index) => (
-		<div className={styles.legend} key={index}>
-			<span className="dot" style={{ color: item.color }}>
-				●
-			</span>
-			<span className="label">{`\u00A0${item.name} \u00A0${item.value}%`}</span>
-		</div>
-	));
+	const legends = test.map((item, index) =>
+		item.value > 1 ? (
+			<div className={styles.legend} key={index}>
+				<span className="dot" style={{ color: item.color }}>
+					●
+				</span>
+				<span className="label">{`\u00A0${item.name} \u00A0${item.value}%`}</span>
+			</div>
+		) : null
+	);
 
 	return (
 		<div className={styles.multicolor_bar}>

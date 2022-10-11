@@ -24,7 +24,7 @@ const Header = () => {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
 
 	const location = useLocation();
-	const { setters } = useContext(ShopContext);
+	const { values, setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
 	const [value, setValue] = useState('');
@@ -42,7 +42,8 @@ const Header = () => {
 						color="gray"
 						className={styles.back}
 						onClick={() => {
-							nav('/');
+							// setters.setSearchValue('');
+							location.pathname.includes('projects') ? nav(-1) : nav('/');
 						}}>
 						{' '}
 						<IconChevronLeft size={18} />{' '}
@@ -51,6 +52,7 @@ const Header = () => {
 				<h1
 					className={styles.title}
 					onClick={() => {
+						setters.setSearchValue('');
 						nav('/');
 					}}>
 					<IconAnkh size={24} /> Sorftwair Shoops <IconAnkh size={24} />
@@ -67,16 +69,17 @@ const Header = () => {
 				</Button>
 			</div>
 
-			{location.pathname.includes('shop') ? null : (
+			{location.pathname.includes('projects') ||
+			!location.pathname.includes('shop') ? (
 				<div className={styles.search}>
 					<TextInput
 						placeholder="Search..."
-						value={value}
+						value={values.searchValue}
 						onChange={handleUserInput}
 						styles={{ root: classes.root, label: classes.label }}
 					/>
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 };

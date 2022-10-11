@@ -1,5 +1,5 @@
 import { Card, Image, createStyles, Box } from '@mantine/core';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { ShopContext } from '../ShopContext';
 import styles from '../styles/TestCard.module.css';
@@ -8,22 +8,28 @@ const useStyles = createStyles((theme) => ({
 	root: {
 		backgroundColor: theme.colors.gray,
 		color: theme.black
-		// maxWidth: 250
 	}
 }));
 
 const TestCard = ({ shop }) => {
+	const location = useLocation();
 	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
 	const { name, img } = shop;
+	const url = location.pathname;
 
 	return (
 		<Box>
 			<Card
 				onClick={() => {
-					nav(`/shop/${name}`);
-					setters.setSelectedShop(shop);
+					if (url.includes('projects')) {
+						nav(`${url}/${name}`);
+					} else {
+						setters.setSelectedShop(shop);
+						setters.setSearchValue('');
+						nav(`/shop/${name}`);
+					}
 				}}
 				shadow="xl"
 				radius="lg"

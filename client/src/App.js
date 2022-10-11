@@ -6,6 +6,11 @@ import ShopsList from './components/ShopsList';
 import ShopDetail from './components/ShopDetail';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
+import ShopProjects from './components/ShopProjects';
+import HomePage from './components/HomePage';
+import ProjectDetail from './components/ProjectDetail';
+
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 function App() {
 	const [colorScheme, setColorScheme] = useLocalStorage({
@@ -29,9 +34,18 @@ function App() {
 					<Router>
 						<Header />
 						<Routes>
-							<Route path="/" element={<ShopsList />} />
+							<Route path="/" element={<HomePage />} />
 							<Route path="/shop/:shopName" element={<ShopDetail />} />
+							<Route
+								path="/shop/:shopName/projects"
+								element={<ShopProjects />}
+							/>
+							<Route
+								path="/shop/:shopName/projects/:projectName"
+								element={<ProjectDetail />}
+							/>
 						</Routes>
+						<ReactQueryDevtools />
 					</Router>
 				</ShopProvider>
 			</MantineProvider>
