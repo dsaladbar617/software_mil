@@ -11,12 +11,12 @@ const useStyles = createStyles((theme) => ({
 	}
 }));
 
-const TestCard = ({ shop }) => {
+const TestCard = ({ data }) => {
 	const location = useLocation();
 	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
-	const { name, img } = shop;
+	const { name, img } = data;
 	const url = location.pathname;
 
 	return (
@@ -24,12 +24,14 @@ const TestCard = ({ shop }) => {
 			<Card
 				onClick={() => {
 					if (url.includes('projects')) {
+						setters.setSelecetedProject(data);
+						console.log(data);
 						nav(`${url}/${name}`);
 					} else {
-						setters.setSelectedShop(shop);
-						setters.setSearchValue('');
+						setters.setSelectedShop(data);
 						nav(`/shop/${name}`);
 					}
+					setters.setSearchValue('');
 				}}
 				shadow="xl"
 				radius="lg"

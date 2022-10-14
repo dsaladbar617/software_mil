@@ -39,3 +39,8 @@
 	line-height: 0px;
 	margin: 0;
 }
+
+.name {
+	text-shadow: -1px -1px 0 #111, 1px -1px 0 #111, -1px 1px 0 #111,
+		1px 1px 0 #111;
+}

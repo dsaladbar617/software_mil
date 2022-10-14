@@ -11,10 +11,17 @@ const ShopProvider = ({ children }) => {
 		projects: [],
 		location: ''
 	});
+	const [selectedProject, setSelecetedProject] = useState({
+		name: '',
+		tags: [],
+		lang: [],
+		proj_link: '',
+		short_desc: ''
+	});
 
-	const values = { searchValue, selectedShop };
+	const values = { searchValue, selectedShop, selectedProject };
 
-	const setters = { setSearchValue, setSelectedShop };
+	const setters = { setSearchValue, setSelectedShop, setSelecetedProject };
 
 	return (
 		<ShopContext.Provider value={{ values, setters }}>

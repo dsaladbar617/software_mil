@@ -8,14 +8,6 @@ import TestCard from './TestCard';
 const CardList = ({ cards }) => {
 	const { values } = useContext(ShopContext);
 
-	// const [cards, setCards] = useState([]);
-
-	// useEffect(() => {
-	// 	axios.get('http://localhost:8080/api').then((res) => {
-	// 		setShops(res.data);
-	// 	});
-	// }, []);
-
 	return (
 		<ul className={styles.shop_list}>
 			{cards
@@ -44,7 +36,7 @@ const CardList = ({ cards }) => {
 				})
 				.map((card, index) => (
 					<li className={styles.cards} key={index}>
-						<TestCard className={styles.shops} shop={card} />
+						<TestCard className={styles.shops} data={card} />
 					</li>
 				))}
 		</ul>

@@ -34,7 +34,7 @@ const ShopDetail = () => {
 		if (values.selectedShop.name === '') {
 			let url = loc.pathname.replace('/shop/', '');
 			axios.get(`http://localhost:8080/api/get/${url}`).then((res) => {
-				// console.log(res.data[0]);
+				console.log(res.data[0]);
 				setters.setSelectedShop(res.data[0]);
 			});
 		}
@@ -92,13 +92,18 @@ const ShopDetail = () => {
 			<Card style={{ root: classes.root }} className={styles.allcontain}>
 				<h1 className={styles.name}>{name}</h1>
 				<img src={`/${img}.png`} alt="Shop Logo" />
-				<h3
-					onClick={(e) => {
-						notify();
-						navigator.clipboard.writeText(
-							e.currentTarget.innerText.replace('Contact: ', '')
-						);
-					}}>{`Contact: ${contact}`}</h3>
+				<h3>
+					Contact:&nbsp;
+					<span
+						onClick={(e) => {
+							notify();
+							navigator.clipboard.writeText(
+								e.currentTarget.innerText.replace('Contact: ', '')
+							);
+						}}>
+						{contact}
+					</span>
+				</h3>
 				<Toaster />
 				{langs ? (
 					<ProgressBar data={langs} />
