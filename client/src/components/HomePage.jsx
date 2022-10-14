@@ -1,17 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 import CardList from './CardList';
+import { ShopContext } from '../ShopContext';
 
 const HomePage = () => {
-	const [shops, setShops] = useState([]);
+	const { values, setters } = useContext(ShopContext);
 
 	useEffect(() => {
 		axios.get('http://localhost:8080/api').then((res) => {
-			setShops(res.data);
+			setters.setShops(res.data);
 		});
 	}, []);
 
-	return <CardList cards={shops} />;
+	return <CardList cards={values.shops} />;
 };
 
 export default HomePage;

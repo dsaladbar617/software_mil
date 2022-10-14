@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/Header';
-import { ShopProvider } from './ShopContext';
+import { ShopContext, ShopProvider } from './ShopContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ShopsList from './components/ShopsList';
 import ShopDetail from './components/ShopDetail';

@@ -2,7 +2,6 @@ import {
 	TextInput,
 	createStyles,
 	Button,
-	Container,
 	useMantineColorScheme
 } from '@mantine/core';
 import { useState, useContext } from 'react';
@@ -22,7 +21,6 @@ const useStyles = createStyles(() => ({
 
 const Header = () => {
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
-
 	const location = useLocation();
 	const { values, setters } = useContext(ShopContext);
 	const nav = useNavigate();
@@ -42,7 +40,6 @@ const Header = () => {
 						color="gray"
 						className={styles.back}
 						onClick={() => {
-							// setters.setSearchValue('');
 							location.pathname.includes('projects') ? nav(-1) : nav('/');
 						}}>
 						{' '}
@@ -68,7 +65,6 @@ const Header = () => {
 					)}
 				</Button>
 			</div>
-
 			{location.pathname.includes('projects') ||
 			!location.pathname.includes('shop') ? (
 				<div className={styles.search}>

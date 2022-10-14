@@ -1,5 +1,4 @@
 import { useEffect, useState, useContext } from 'react';
-// import ShopCard from './ShopCard';
 import { ShopContext } from '../ShopContext';
 import axios from 'axios';
 import styles from '../styles/ShopsList.module.css';
@@ -7,7 +6,6 @@ import TestCard from './TestCard';
 
 const ShopsList = () => {
 	const { values } = useContext(ShopContext);
-
 	const [shops, setShops] = useState([]);
 
 	useEffect(() => {
@@ -23,7 +21,6 @@ const ShopsList = () => {
 					let test = Object.values(shop)
 						.map((item) => {
 							if (Array.isArray(item)) {
-								// console.log(item);
 								return item.map((arrItem) => Object.values(arrItem));
 							} else {
 								return item;

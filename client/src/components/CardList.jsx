@@ -1,7 +1,5 @@
-import { useEffect, useState, useContext } from 'react';
-// import ShopCard from './ShopCard';
+import { useContext } from 'react';
 import { ShopContext } from '../ShopContext';
-import axios from 'axios';
 import styles from '../styles/ShopsList.module.css';
 import TestCard from './TestCard';
 
@@ -15,7 +13,6 @@ const CardList = ({ cards }) => {
 					let searchQuery = Object.values(card)
 						.map((item) => {
 							if (Array.isArray(item)) {
-								// console.log(item);
 								return item.map((arrItem) => Object.values(arrItem));
 							} else {
 								return item;

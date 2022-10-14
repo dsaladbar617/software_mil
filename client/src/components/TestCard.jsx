@@ -23,14 +23,13 @@ const TestCard = ({ data }) => {
 			<Card
 				onClick={() => {
 					if (url.includes('projects')) {
-						setters.setSelecetedProject(data);
+						setters.setSelectedProject(data);
 						console.log(data);
 						nav(`${url}/${name}`);
 					} else {
 						setters.setSelectedShop(data);
 						nav(`/shop/${name}`);
 					}
-					setters.setSearchValue('');
 				}}
 				shadow="xl"
 				radius="lg"

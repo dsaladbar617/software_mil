@@ -7,7 +7,8 @@ import {
 	addProject,
 	findShop,
 	getGitHubRepos,
-	getGitLabRepos
+	getGitLabRepos,
+	findProject
 } from '../controllers/index.js';
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.route('/api/projects').patch(addProject);
 router.route('/api/get/:shopName').get(findShop);
 router.route('/api/repos/hub/:username').get(getGitHubRepos);
 router.route('/api/repos/lab/:projectId').get(getGitLabRepos);
+router.route('/api/get/:shopName/:projName').get(findProject);
 
 export default router;

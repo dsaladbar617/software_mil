@@ -29,6 +29,7 @@ const ShopDetail = () => {
 	const [projLang, setProjLang] = useState([]);
 	const { name, desc, location, img, contact } = values.selectedShop;
 	const theme = useMantineTheme();
+	const { classes } = useStyles();
 
 	useEffect(() => {
 		if (values.selectedShop.name === '') {
@@ -56,9 +57,7 @@ const ShopDetail = () => {
 			.get('http://localhost:8080/api/repos/hub/dsaladbar617')
 			.then((res) => {
 				setProjLang(res.data);
-				// console.log(res.data);
 				return res.data;
-				// sessionStorage.setItem('lang_data', res.data);
 			})
 			.catch((err) => console.log(err));
 
@@ -80,12 +79,6 @@ const ShopDetail = () => {
 			}
 		});
 	};
-
-	const { classes } = useStyles();
-
-	// const langData = sessionStorage.getItem('lang_data');
-
-	// console.log(langData);
 
 	return (
 		<div className={styles.scroll}>

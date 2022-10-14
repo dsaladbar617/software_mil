@@ -2,8 +2,6 @@ import { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ShopContext } from '../ShopContext';
 import axios from 'axios';
-import TestCard from './TestCard';
-import styles from '../styles/ShopDetail.module.css';
 import CardList from './CardList';
 
 const ShopProjects = () => {
@@ -21,7 +19,6 @@ const ShopProjects = () => {
 		}
 	}, []);
 
-	console.log(values.selectedShop);
 	let projects = values.selectedShop.projects;
 
 	return <CardList cards={projects} />;

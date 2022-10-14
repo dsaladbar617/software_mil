@@ -58,8 +58,31 @@ const findShop = async (req, res) => {
 
 const findProject = async (req, res) => {
 	let projectName = req.params.projName;
+	let shopName = req.params.shopName;
 
-	let data = await shops.find();
+	let data = await shops
+		.find({ name: shopName }, 'projects name contact')
+		.collation({ locale: 'en', strength: 1 });
+
+	let found = data[0].projects.find(
+		(project) => project.name.toLowerCase() === projectName.toLowerCase()
+	);
+
+	let newData = {
+		shopName: data[0].name,
+		contact: data[0].contact,
+		project: found
+	};
+	console.log(newData);
+	res.status(200).json(newData);
 };
 
-export { addShop, getShops, updateShop, removeShop, addProject, findShop };
+export {
+	addShop,
+	getShops,
+	updateShop,
+	removeShop,
+	addProject,
+	findShop,
+	findProject
+};
