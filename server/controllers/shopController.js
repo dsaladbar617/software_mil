@@ -56,4 +56,10 @@ const findShop = async (req, res) => {
 	res.status(200).json(shop);
 };
 
+const findProject = async (req, res) => {
+	let projectName = req.params.projName;
+
+	let data = await shops.find();
+};
+
 export { addShop, getShops, updateShop, removeShop, addProject, findShop };
