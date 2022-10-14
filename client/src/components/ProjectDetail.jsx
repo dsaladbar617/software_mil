@@ -31,6 +31,13 @@ const ProjectDetail = () => {
 	const theme = useMantineTheme();
 
 	useEffect(() => {
+		if (values.selectedShop.name === '') {
+			let url = loc.pathname.replace('/shop/', '');
+			axios.get(`http://localhost:8080/api/get/${url}`).then((res) => {
+				setters.setSelectedShop(res.data[0]);
+			});
+		}
+
 		if (values.selectedProject.name === '') {
 			let urlName = loc.pathname.split('/')[4];
 
@@ -39,12 +46,6 @@ const ProjectDetail = () => {
 				: urlName;
 
 			console.log(projectName);
-
-			// let url = loc.pathname.replace('/shop/', '');
-			// axios.get(`http://localhost:8080/api/get/${url}`).then((res) => {
-			// 	// console.log(res.data[0]);
-			// 	setters.setSelectedShop(res.data[0]);
-			// });
 		}
 	}, []);
 

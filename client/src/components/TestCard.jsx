@@ -18,7 +18,6 @@ const TestCard = ({ data }) => {
 	const { classes } = useStyles();
 	const { name, img } = data;
 	const url = location.pathname;
-
 	return (
 		<Box>
 			<Card
