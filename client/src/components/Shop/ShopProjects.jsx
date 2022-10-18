@@ -1,8 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ShopContext } from '../ShopContext';
+import { ShopContext } from '../../ShopContext';
 import axios from 'axios';
-import CardList from './CardList';
+import CardList from '../UI/CardList';
 
 const ShopProjects = () => {
 	const loc = useLocation();

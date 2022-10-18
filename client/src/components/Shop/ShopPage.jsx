@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
-import CardList from './CardList';
-import { ShopContext } from '../ShopContext';
+import CardList from '../UI/CardList';
+import { ShopContext } from '../../ShopContext';
 
-const HomePage = () => {
+const ShopPage = () => {
 	const { values, setters } = useContext(ShopContext);
 
 	useEffect(() => {
@@ -15,4 +15,4 @@ const HomePage = () => {
 	return <CardList cards={values.shops} />;
 };
 
-export default HomePage;
+export default ShopPage;

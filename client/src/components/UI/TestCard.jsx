@@ -1,8 +1,8 @@
 import { Card, Image, createStyles, Box } from '@mantine/core';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
-import { ShopContext } from '../ShopContext';
-import styles from '../styles/TestCard.module.css';
+import { ShopContext } from '../../ShopContext';
+import styles from '../../styles/TestCard.module.css';
 
 const useStyles = createStyles((theme) => ({
 	root: {

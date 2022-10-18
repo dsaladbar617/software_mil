@@ -1,9 +1,9 @@
 import { useContext, useState } from 'react';
-import { ShopContext } from '../ShopContext';
+import { ShopContext } from '../../ShopContext';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import ProgressBar from './ProgressBar';
-import styles from '../styles/ShopDetail.module.css';
+import ProgressBar from '../UI/ProgressBar';
+import styles from '../../styles/ShopDetail.module.css';
 import axios from 'axios';
 import {
 	Card,

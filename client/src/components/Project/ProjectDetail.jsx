@@ -1,11 +1,11 @@
 import { useContext } from 'react';
-import { ShopContext } from '../ShopContext';
+import { ShopContext } from '../../ShopContext';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import styles from '../styles/ShopDetail.module.css';
+import styles from '../../styles/ShopDetail.module.css';
 import axios from 'axios';
 import { Card, useMantineTheme, createStyles, Badge } from '@mantine/core';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 
 const useStyles = createStyles((theme) => ({
 	root: {
@@ -19,7 +19,10 @@ const ProjectDetail = () => {
 	const { name, short_desc, img } = values.selectedProject;
 	const theme = useMantineTheme();
 	const { classes } = useStyles();
-	const [nameOfShop, setNameOfShop] = useState('');
+	const [currentShop, setCurrentShop] = useState({
+		name: '',
+		contact: ''
+	});
 
 	useEffect(() => {
 		let shopName = loc.pathname.split('/')[2];
@@ -33,12 +36,17 @@ const ProjectDetail = () => {
 				.get(`http://localhost:8080/api/get/${shopName}/${projectName}`)
 				.then((res) => {
 					console.log(res.data);
-					setNameOfShop(res.data.shopName);
-					console.log(nameOfShop);
+					setCurrentShop({
+						name: res.data.shopName,
+						contact: res.data.contact
+					});
 					setters.setSelectedProject(res.data.project);
 				});
 		} else {
-			setNameOfShop(values.selectedShop.name);
+			setCurrentShop({
+				name: values.selectedShop.name,
+				contact: values.selectedShop.contact
+			});
 		}
 	}, []);
 
@@ -58,13 +66,12 @@ const ProjectDetail = () => {
 		});
 	};
 
-	console.log(nameOfShop);
 	return (
 		<div className={styles.scroll}>
 			<Card style={{ root: classes.root }} className={styles.allcontain}>
 				<h1 className={styles.name}>{name}</h1>
 				<img src={`/${img}.png`} alt="Shop Logo" />
-				<h3>Shop: {nameOfShop}</h3>
+				<h3>Shop: {currentShop.name}</h3>
 				<h3>
 					Contact:&nbsp;
 					<span
@@ -74,9 +81,10 @@ const ProjectDetail = () => {
 								e.currentTarget.innerText.replace('Contact: ', '')
 							);
 						}}>
-						{values.selectedProject.contact}
+						{currentShop.contact}
 					</span>
 				</h3>
+				<Toaster />
 			</Card>
 			<Card style={{ root: classes.root }} className={styles.desc_container}>
 				<div>

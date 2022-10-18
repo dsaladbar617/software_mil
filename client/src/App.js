@@ -1,14 +1,14 @@
 import './App.css';
-import Header from './components/Header';
+import Header from './components/UI/Header';
 import { ShopContext, ShopProvider } from './ShopContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import ShopsList from './components/ShopsList';
-import ShopDetail from './components/ShopDetail';
+import ShopDetail from './components/Shop/ShopDetail';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';
 import { useLocalStorage } from '@mantine/hooks';
-import ShopProjects from './components/ShopProjects';
-import HomePage from './components/HomePage';
-import ProjectDetail from './components/ProjectDetail';
+import ShopProjects from './components/Shop/ShopProjects';
+import ShopPage from './components/Shop/ShopPage';
+import ProjectDetail from './components/Project/ProjectDetail';
+import HomePage from './components/UI/HomePage';
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -35,6 +35,7 @@ function App() {
 						<Header />
 						<Routes>
 							<Route path="/" element={<HomePage />} />
+							<Route path="/shop" element={<ShopPage />} />
 							<Route path="/shop/:shopName" element={<ShopDetail />} />
 							<Route
 								path="/shop/:shopName/projects"
