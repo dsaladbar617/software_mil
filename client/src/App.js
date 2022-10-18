@@ -46,7 +46,7 @@ function App() {
 								element={<ProjectDetail />}
 							/>
 						</Routes>
-						<ReactQueryDevtools />
+						{/* <ReactQueryDevtools /> */}
 					</Router>
 				</ShopProvider>
 			</MantineProvider>
