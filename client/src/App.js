@@ -1,6 +1,6 @@
 import './App.css';
 import Header from './components/UI/Header';
-import { ShopContext, ShopProvider } from './ShopContext';
+import { ShopProvider } from './ShopContext';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ShopDetail from './components/Shop/ShopDetail';
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core';

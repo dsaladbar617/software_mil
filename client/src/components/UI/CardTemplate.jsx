@@ -11,17 +11,20 @@ const useStyles = createStyles((theme) => ({
 	}
 }));
 
-const TestCard = ({ data }) => {
+const CardTemplate = ({ data }) => {
 	const location = useLocation();
 	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
+	// Deconstruct the data prop to get the name and img property
 	const { name, img } = data;
+	// Get the value of the url
 	const url = location.pathname;
 	return (
 		<Box>
 			<Card
 				onClick={() => {
+					// Depending on users location navigate to the correct details page and set the correct shop/project in the global context.
 					if (url.includes('projects')) {
 						setters.setSelectedProject(data);
 						console.log(data);
@@ -54,4 +57,4 @@ const TestCard = ({ data }) => {
 	);
 };
 
-export default TestCard;
+export default CardTemplate;

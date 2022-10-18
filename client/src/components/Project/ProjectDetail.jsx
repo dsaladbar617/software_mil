@@ -7,6 +7,7 @@ import axios from 'axios';
 import { Card, useMantineTheme, createStyles, Badge } from '@mantine/core';
 import toast, { Toaster } from 'react-hot-toast';
 
+// Sets the background color through mantine depending on light/dark mode.
 const useStyles = createStyles((theme) => ({
 	root: {
 		backgroundColor: theme.colors.gray
@@ -16,9 +17,11 @@ const useStyles = createStyles((theme) => ({
 const ProjectDetail = () => {
 	const { values, setters } = useContext(ShopContext);
 	const loc = useLocation();
+	// Deconstruct the selectedProject object from the global context.
 	const { name, short_desc, img } = values.selectedProject;
 	const theme = useMantineTheme();
 	const { classes } = useStyles();
+	// Format used to display shop name and contact.
 	const [currentShop, setCurrentShop] = useState({
 		name: '',
 		contact: ''
@@ -26,23 +29,27 @@ const ProjectDetail = () => {
 
 	useEffect(() => {
 		let shopName = loc.pathname.split('/')[2];
-		let urlName = loc.pathname.split('/')[4];
-		let projectName = urlName.includes('%20')
-			? urlName.replace('%20', ' ')
-			: urlName;
 
+		let rawProjectName = loc.pathname.split('/')[4];
+
+		let projectName = rawProjectName.includes('%20')
+			? rawProjectName.replace('%20', ' ')
+			: rawProjectName;
+
+		// If there is no selectedProject, or page is reloaded/directly navigated to get the correct project data to display
 		if (values.selectedProject.name === '') {
 			axios
 				.get(`http://localhost:8080/api/get/${shopName}/${projectName}`)
 				.then((res) => {
-					console.log(res.data);
 					setCurrentShop({
 						name: res.data.shopName,
 						contact: res.data.contact
 					});
 					setters.setSelectedProject(res.data.project);
 				});
-		} else {
+		}
+		// If the selectedProject data is present, assign shop data from global context.
+		else {
 			setCurrentShop({
 				name: values.selectedShop.name,
 				contact: values.selectedShop.contact
@@ -50,6 +57,7 @@ const ProjectDetail = () => {
 		}
 	}, []);
 
+	// Function used to create pop up notification when contact is copied.
 	const notify = () => {
 		let color =
 			theme.colorScheme === 'dark'
@@ -71,20 +79,20 @@ const ProjectDetail = () => {
 			<Card style={{ root: classes.root }} className={styles.allcontain}>
 				<h1 className={styles.name}>{name}</h1>
 				<img src={`/${img}.png`} alt="Shop Logo" />
-				<h3>Shop: {currentShop.name}</h3>
-				<h3>
-					Contact:&nbsp;
-					<span
-						onClick={(e) => {
-							notify();
-							navigator.clipboard.writeText(
-								e.currentTarget.innerText.replace('Contact: ', '')
-							);
-						}}>
-						{currentShop.contact}
-					</span>
-				</h3>
-				<Toaster />
+				<div className={styles.projectData}>
+					<h3>Shop: {currentShop.name}</h3>
+					<h3>
+						Contact:&nbsp;
+						<span
+							onClick={(e) => {
+								notify();
+								navigator.clipboard.writeText(e.currentTarget.innerText);
+							}}>
+							{currentShop.contact}
+						</span>
+					</h3>
+					<Toaster />
+				</div>
 			</Card>
 			<Card style={{ root: classes.root }} className={styles.desc_container}>
 				<div>
@@ -94,11 +102,14 @@ const ProjectDetail = () => {
 			</Card>
 			<Card style={{ root: classes.root }} className={styles.tags}>
 				<ul className={styles.tagList}>
-					{values.selectedProject.tags.map((tag, index) => (
-						<li key={index} className={styles.tagItem}>
-							<Badge>{tag}</Badge>
-						</li>
-					))}
+					{
+						// Create list of tags from the project data.
+						values.selectedProject.tags.map((tag, index) => (
+							<li key={index} className={styles.tagItem}>
+								<Badge>{tag}</Badge>
+							</li>
+						))
+					}
 				</ul>
 			</Card>
 		</div>

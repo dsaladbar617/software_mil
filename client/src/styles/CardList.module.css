@@ -1,18 +1,13 @@
 .shop_list {
-	/* margin-top: 10px;
-	margin-left: 1rem;
-	margin-right: 1rem; */
 	display: grid;
 	gap: 0.5rem;
 	justify-content: center;
-	/* overflow: hidden; */
 }
 
 .scroll {
 	margin-top: 10px;
 	margin-left: 1rem;
 	margin-right: 1rem;
-	/* overflow-y: auto; */
 }
 
 ul {
@@ -23,13 +18,7 @@ ul {
 .cards {
 	cursor: pointer;
 	z-index: 0;
-	/* transition: all 1s ease; */
 }
-
-/* .cards:hover {
-	transform: scale(1.025
-	);
-} */
 
 @media (min-width: 400px) {
 	.shop_list {

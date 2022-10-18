@@ -26,43 +26,51 @@ const ShopDetail = () => {
 	const { values, setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const loc = useLocation();
-	const [projLang, setProjLang] = useState([]);
+	// const [projLang, setProjLang] = useState([]);
 	const { name, desc, location, img, contact } = values.selectedShop;
 	const theme = useMantineTheme();
 	const { classes } = useStyles();
 
 	useEffect(() => {
+		// If the selectedShop data doesn't exist in the global context get the correct shop data from the database and set it in context.
 		if (values.selectedShop.name === '') {
 			let url = loc.pathname.replace('/shop/', '');
 			axios.get(`http://localhost:8080/api/get/${url}`).then((res) => {
-				console.log(res.data[0]);
 				setters.setSelectedShop(res.data[0]);
 			});
 		}
 
-		// if (projLang.length === 0) {
-		// 	axios
-		// 		.get('http://localhost:8080/api/repos/hub/dsaladbar617')
-		// 		.then((res) => {
-		// 			setProjLang(res.data);
-		// 			console.log(res.data);
-		// 			// sessionStorage.setItem('lang_data', res.data);
-		// 		})
-		// 		.catch((err) => console.log(err));
-		// }
+		/*
+		Unsure if language ProgressBar will be used.
+
+		if (projLang.length === 0) {
+			axios
+				.get('http://localhost:8080/api/repos/hub/dsaladbar617')
+				.then((res) => {
+					setProjLang(res.data);
+					console.log(res.data);
+					// sessionStorage.setItem('lang_data', res.data);
+				})
+				.catch((err) => console.log(err));
+		}
+		*/
 	}, []);
+
+	/*
+	Used with ProgressBar
 
 	const { data: langs, isLoading } = useQuery(['langData'], async () => {
 		let returned = await axios
 			.get('http://localhost:8080/api/repos/hub/dsaladbar617')
 			.then((res) => {
-				setProjLang(res.data);
+				// setProjLang(res.data);
 				return res.data;
 			})
 			.catch((err) => console.log(err));
 
 		return returned;
 	});
+	*/
 
 	const notify = () => {
 		let color =
@@ -98,7 +106,7 @@ const ShopDetail = () => {
 					</span>
 				</h3>
 				<Toaster />
-				{langs ? (
+				{/* {langs ? (
 					<ProgressBar data={langs} />
 				) : (
 					<Loader
@@ -108,7 +116,7 @@ const ShopDetail = () => {
 						variant="bars"
 						color="gray"
 					/>
-				)}
+				)} */}
 
 				<Button
 					sx={{

@@ -6,9 +6,6 @@
 .allcontain {
 	margin-left: 1rem;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-	/* border-radius: 6px; */
-	/* background-color: #2b2b2b; */
-	/* padding: 2rem; */
 	max-width: 30rem;
 	width: 80%;
 	margin: auto;
@@ -19,11 +16,27 @@
 }
 
 .allcontain h1 {
-	margin: 0;
+	margin: 0.5rem;
 }
 
+/* Used when the language ProgressBar is present*/
+
 .allcontain h3 {
-	margin: 0;
+	margin: 1rem;
+	line-height: 1rem;
+}
+
+.projectData {
+	margin: auto;
+	margin-top: 0.5rem;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+
+.projectData h3 {
+	margin: 0.5rem;
 }
 
 .allcontain span:hover {

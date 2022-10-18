@@ -2,6 +2,7 @@ import styles from '../../styles/ProgressBar.module.css';
 import React from 'react';
 
 const ProgressBar = ({ data }) => {
+	// Create an array of colors to be used in progress bar depending on how many languages are added.
 	let colorArray = [
 		'#FF6633',
 		'#E6B333',
@@ -55,12 +56,14 @@ const ProgressBar = ({ data }) => {
 		'#6666FF'
 	];
 
-	let test = data.map((elem, index) => ({
+	// Add a color value to each language object from the input data prop.
+	let langWithColor = data.map((elem, index) => ({
 		...elem,
 		color: colorArray[index]
 	}));
 
-	const bars = test.map((item, index) =>
+	// For all languages above 1% assign a length and color for the ProgressBar.
+	const bars = langWithColor.map((item, index) =>
 		item.value > 1 ? (
 			<div
 				className={styles.bar}
@@ -72,7 +75,8 @@ const ProgressBar = ({ data }) => {
 		) : null
 	);
 
-	const legends = test.map((item, index) =>
+	// For all the languages above 1% return a list of names and percentages in the languages assigned color.
+	const legends = langWithColor.map((item, index) =>
 		item.value > 1 ? (
 			<div className={styles.legend} key={index}>
 				<span className="dot" style={{ color: item.color }}>

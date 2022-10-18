@@ -16,7 +16,6 @@
 .title img {
 	height: 4rem;
 	width: auto;
-	/* margin-right: 1rem; */
 }
 
 .head_container {
@@ -24,7 +23,7 @@
 	flex-direction: column;
 }
 
-.duh {
+.themeToggle {
 	height: 3vh;
 	background-image: linear-gradient(
 		to bottom,
@@ -42,7 +41,6 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	/* margin: 0; */
 }
 
 .sticky {

@@ -10,6 +10,7 @@ import { ShopContext } from '../../ShopContext';
 import styles from '../../styles/Header.module.css';
 import { IconSun, IconMoon, IconChevronLeft, IconAnkh } from '@tabler/icons';
 
+// Create a default style to apply to the mantine TextInput
 const useStyles = createStyles(() => ({
 	root: {
 		border: 0,
@@ -20,17 +21,23 @@ const useStyles = createStyles(() => ({
 }));
 
 const Header = () => {
+	// Mantine function to switch between light and dark mode
 	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+	// React hook to get the current location of the user. In this case url pathname
 	const location = useLocation();
+	// Get the getters and setters from the global context
 	const { values, setters } = useContext(ShopContext);
+	// React hook to navigate to a different route
 	const nav = useNavigate();
+	// Make the mantine styling function accesible to the component
 	const { classes } = useStyles();
-	const [value, setValue] = useState('');
-	const url = location.pathname.split('/');
-	const urlEnd = url[url.length - 1];
+	// return the url as an array.
+	const urlArr = location.pathname.split('/');
+	// Get the last element which is used to determine the navigation options.
+	const urlEnd = urlArr[urlArr.length - 1];
 
+	// Function used to set the searchValue in the global context.
 	const handleUserInput = (e) => {
-		setValue(e.target.value);
 		setters.setSearchValue(e.target.value);
 	};
 
@@ -38,25 +45,28 @@ const Header = () => {
 		<div className={styles.sticky}>
 			<div className={styles.head_container}>
 				<div className={styles.head}>
-					{location.pathname.includes('shop') ? (
-						<Button
-							color="gray"
-							className={styles.back}
-							onClick={() => {
-								nav(-1);
-								// location.pathname.includes('projects') ? nav(-1) : nav('/');
-							}}>
-							{' '}
-							<IconChevronLeft size={18} />{' '}
-						</Button>
-					) : null}
+					{
+						// If the url includes the string shop return the back button. Otherwise do not render the back button.
+						location.pathname.includes('shop') ? (
+							<Button
+								color="gray"
+								className={styles.back}
+								onClick={() => {
+									nav(-1);
+								}}>
+								{' '}
+								<IconChevronLeft size={18} />{' '}
+							</Button>
+						) : null
+					}
 					<div
 						className={styles.title}
 						onClick={() => {
+							// Navigate to the homepage and clear the searchValue in the global context.
 							setters.setSearchValue('');
 							nav('/');
 						}}>
-						<img src="/tyet.png" alt="tyet symbol" />
+						{/* Placeholder for icon */}
 						<h1>Sorftwair Shoops</h1>
 					</div>
 					<Button
@@ -70,19 +80,20 @@ const Header = () => {
 						)}
 					</Button>
 				</div>
-				<div className={styles.duh}>
-					{urlEnd === 'shop' || urlEnd === 'projects' ? (
-						// location.pathname.includes('projects') ||
-						// !location.pathname.includes('shop') ?
-						<div className={styles.search}>
-							<TextInput
-								placeholder="Search..."
-								value={values.searchValue}
-								onChange={handleUserInput}
-								styles={{ root: classes.root, label: classes.label }}
-							/>
-						</div>
-					) : null}
+				<div className={styles.themeToggle}>
+					{
+						// use urlEnd value to determine if the searchbar will be rendered or not
+						urlEnd === 'shop' || urlEnd === 'projects' ? (
+							<div className={styles.search}>
+								<TextInput
+									placeholder="Search..."
+									value={values.searchValue}
+									onChange={handleUserInput}
+									styles={{ root: classes.root, label: classes.label }}
+								/>
+							</div>
+						) : null
+					}
 				</div>
 			</div>
 		</div>

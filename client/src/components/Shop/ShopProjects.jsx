@@ -8,6 +8,7 @@ const ShopProjects = () => {
 	const loc = useLocation();
 	const { values, setters } = useContext(ShopContext);
 
+	// Check the global context for the selectedShop. If it does not exist use the url to get the correct shop data.
 	useEffect(() => {
 		if (values.selectedShop.name === '') {
 			let url = loc.pathname.replace('/shop/', '').replace('/projects', '');
@@ -19,6 +20,7 @@ const ShopProjects = () => {
 		}
 	}, []);
 
+	// Get all of the projects from the selected shop to populate a list of project cards.
 	let projects = values.selectedShop.projects;
 
 	return <CardList cards={projects} />;
