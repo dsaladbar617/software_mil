@@ -13,6 +13,7 @@ import {
 
 const router = express.Router();
 
+// Endpoints for the frontend to interact with backend.
 router.route('/api').get(getShops);
 router.route('/api').post(addShop);
 router.route('/api').patch(updateShop);
