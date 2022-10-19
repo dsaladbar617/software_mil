@@ -9,6 +9,7 @@ import ShopProjects from './components/Shop/ShopProjects';
 import ShopPage from './components/Shop/ShopPage';
 import ProjectDetail from './components/Project/ProjectDetail';
 import HomePage from './components/UI/HomePage';
+import AllProjects from './components/Project/AllProjects';
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
@@ -45,6 +46,7 @@ function App() {
 								path="/shop/:shopName/projects/:projectName"
 								element={<ProjectDetail />}
 							/>
+							<Route path="/projects/:searched" element={<AllProjects />} />
 						</Routes>
 						{/* <ReactQueryDevtools /> */}
 					</Router>

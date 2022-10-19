@@ -86,6 +86,32 @@ const findProject = async (req, res) => {
 	res.status(200).json(newData);
 };
 
+//Makes an all projects page regardless of shop that match clicked tag fuck you Ross
+const getAllShopsProjects = async (req, res) => {
+	let query = req.params.queryValue;
+
+	let allDocs = await shops
+		.find({
+			projects: { $elemMatch: { tags: `${query}` } }
+		})
+		.collation({ locale: 'en', strength: 1 });
+
+	let test = allDocs.map((docs) => {
+		return {
+			name: docs.name,
+			projects: docs.projects.filter((project) => {
+				if (project.tags.join().toLowerCase().includes(query.toLowerCase())) {
+					console.log(project);
+					return project;
+				}
+			}),
+			contact: docs.contact
+		};
+	});
+
+	res.status(200).json(test);
+};
+
 export {
 	addShop,
 	getShops,
@@ -93,5 +119,6 @@ export {
 	removeShop,
 	addProject,
 	findShop,
-	findProject
+	findProject,
+	getAllShopsProjects
 };

@@ -16,7 +16,9 @@ const ShopProvider = ({ children }) => {
 		tags: [],
 		lang: [],
 		proj_link: '',
-		short_desc: ''
+		short_desc: '',
+		shopName: '',
+		ShopContact: ''
 	});
 	const [shops, setShops] = useState([]);
 

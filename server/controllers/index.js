@@ -5,7 +5,8 @@ import {
 	removeShop,
 	addProject,
 	findShop,
-	findProject
+	findProject,
+	getAllShopsProjects
 } from './shopController.js';
 import { getGitHubRepos, getGitLabRepos } from './repoController.js';
 
@@ -18,5 +19,6 @@ export {
 	findShop,
 	getGitHubRepos,
 	getGitLabRepos,
-	findProject
+	findProject,
+	getAllShopsProjects
 };

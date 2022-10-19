@@ -1,24 +1,60 @@
 .container {
 	text-align: center;
-	padding: 3rem;
+	/* padding: 2rem; */
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 	max-width: 70rem;
-	width: 75%;
+	max-height: 70vh;
+	width: 75vw;
+	height: 70vh;
 	margin: auto;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.section {
+	max-width: 70rem;
+	max-height: 70vh;
+	width: 90%;
+	height: 70vh;
 	display: flex;
+	margin: auto;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
+	/* position: -webkit-sticky;
+	position: sticky;
+	top: 50rem; */
 }
 
 .btn {
-	margin-top: 1rem;
+	margin-top: 0.5rem;
+	margin-bottom: 1rem;
+	/* position: -webkit-sticky;
+	position: sticky;
+	bottom: 20px;
+	left: 88vw; */
+	/* margin: 0; */
 	/* position: absolute;
 	top: 0;
 	right: 10px; */
 }
 
 .textBox {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+	height: 90%;
+	overflow: auto;
+	padding-bottom: 19px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	mask-image: linear-gradient(
+		to bottom,
+		black calc(100% - 40px),
+		transparent 100%
+	);
+}
+
+.textBox::-webkit-scrollbar {
+	display: none;
 }

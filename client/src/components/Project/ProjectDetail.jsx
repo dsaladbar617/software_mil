@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ShopContext } from '../../ShopContext';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from '../../styles/ShopDetail.module.css';
 import axios from 'axios';
@@ -17,6 +17,7 @@ const useStyles = createStyles((theme) => ({
 const ProjectDetail = () => {
 	const { values, setters } = useContext(ShopContext);
 	const loc = useLocation();
+	const nav = useNavigate();
 	// Deconstruct the selectedProject object from the global context.
 	const { name, short_desc, img } = values.selectedProject;
 	const theme = useMantineTheme();
@@ -106,7 +107,13 @@ const ProjectDetail = () => {
 						// Create list of tags from the project data.
 						values.selectedProject.tags.map((tag, index) => (
 							<li key={index} className={styles.tagItem}>
-								<Badge>{tag}</Badge>
+								<Badge
+									onClick={() => {
+										let clickedTag = tag.replace(' ', '%20');
+										nav(`/projects/${clickedTag}`);
+									}}>
+									{tag}
+								</Badge>
 							</li>
 						))
 					}
