@@ -93,3 +93,7 @@
 body::-webkit-scrollbar {
 	display: none;
 }
+
+.badge:hover {
+	cursor: pointer;
+}

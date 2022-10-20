@@ -49,11 +49,25 @@ const CardList = ({ cards }) => {
 					}
 				})
 				// For each card that is returned create a CardTemplate component to display
-				.map((card, index) => (
-					<li className={styles.cards} key={index}>
-						<CardTemplate className={styles.shops} data={card} />
-					</li>
-				))
+				.map((card, index) => {
+					if (card.shopName === undefined) {
+						return (
+							<li className={styles.cards} key={index}>
+								<CardTemplate className={styles.shops} data={card} />
+							</li>
+						);
+					} else if (card.shopName !== undefined) {
+						return card.projects.map((project, i) => (
+							<li className={styles.cards} key={`${index}${i}`}>
+								<CardTemplate
+									className={styles.shops}
+									data={project}
+									shopName={card.shopName}
+								/>
+							</li>
+						));
+					}
+				})
 		);
 	};
 

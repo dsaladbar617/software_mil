@@ -96,20 +96,59 @@ const getAllShopsProjects = async (req, res) => {
 		})
 		.collation({ locale: 'en', strength: 1 });
 
-	let test = allDocs.map((docs) => {
+	let finalProjects = allDocs.map((docs) => {
 		return {
-			name: docs.name,
+			shopName: docs.name,
 			projects: docs.projects.filter((project) => {
 				if (project.tags.join().toLowerCase().includes(query.toLowerCase())) {
 					console.log(project);
 					return project;
 				}
 			}),
-			contact: docs.contact
+			shopContact: docs.contact
 		};
 	});
 
-	res.status(200).json(test);
+	res.status(200).json(finalProjects);
+};
+
+const getAutoComplete = async (req, res) => {
+	let allTerms = await shops.find(
+		{},
+		{
+			name: 1,
+			'projects.name': 1,
+			'projects.tags': 1,
+			'projects.lang': 1,
+			_id: 0
+		}
+	);
+
+	let test = allTerms.map((term) => {
+		// console.log(term);
+		return {
+			name: term.name,
+			projName: term.projects.map((project) => project.name),
+			tags: term.projects.map((project) => project.tags),
+			lang: term.projects.map((project) => project.lang)
+		};
+	});
+	// console.log(test);
+
+	let finalTest = test.map((item) => Object.values(item)).flat(3);
+
+	let uniq = finalTest.filter((elem, i) => {
+		return finalTest.indexOf(elem) === i;
+	});
+
+	let final = uniq.map((item) => ({ value: item }));
+	// let set = new Set(finalTest);
+
+	// let uniq = [...set];
+
+	// console.log(finalTest);
+
+	res.status(200).json(final);
 };
 
 export {
@@ -120,5 +159,6 @@ export {
 	addProject,
 	findShop,
 	findProject,
-	getAllShopsProjects
+	getAllShopsProjects,
+	getAutoComplete
 };

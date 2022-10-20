@@ -11,9 +11,9 @@ const useStyles = createStyles((theme) => ({
 	}
 }));
 
-const CardTemplate = ({ data }) => {
+const CardTemplate = ({ data, shopName = '' }) => {
 	const location = useLocation();
-	const { setters } = useContext(ShopContext);
+	const { values, setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	const { classes } = useStyles();
 	// Deconstruct the data prop to get the name and img property
@@ -23,7 +23,6 @@ const CardTemplate = ({ data }) => {
 	// const lastUrl = url[url.length - 1];
 	const [lastUrl, setLastUrl] = useState(url[url.length - 1]);
 
-	console.log(data);
 	return (
 		<Box>
 			<Card
@@ -32,13 +31,13 @@ const CardTemplate = ({ data }) => {
 					console.log(lastUrl);
 					if (lastUrl === 'projects') {
 						setters.setSelectedProject(data);
-						console.log(data);
 						nav(`${url.join('/')}/${name}`);
 					} else if (lastUrl === 'shop') {
 						setters.setSelectedShop(data);
 						nav(`/shop/${name}`);
 					} else {
 						setters.setSelectedProject(data);
+						nav(`/shop/${shopName}/projects/${name}`);
 					}
 				}}
 				shadow="xl"

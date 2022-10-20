@@ -11,10 +11,7 @@ const AllProjects = () => {
 		const url = location.pathname.split('/');
 		const query = url[url.length - 1];
 		axios.get(`http://localhost:8080/api/getprojects/${query}`).then((res) => {
-			// res.data.forEach();
-			let test = res.data.map((elem) => elem.projects);
-			console.log(test.flat());
-			setCards(test.flat());
+			setCards(res.data.flat());
 		});
 	}, []);
 

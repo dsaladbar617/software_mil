@@ -6,7 +6,8 @@ import {
 	addProject,
 	findShop,
 	findProject,
-	getAllShopsProjects
+	getAllShopsProjects,
+	getAutoComplete
 } from './shopController.js';
 import { getGitHubRepos, getGitLabRepos } from './repoController.js';
 
@@ -20,5 +21,6 @@ export {
 	getGitHubRepos,
 	getGitLabRepos,
 	findProject,
-	getAllShopsProjects
+	getAllShopsProjects,
+	getAutoComplete
 };

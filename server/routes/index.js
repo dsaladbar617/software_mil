@@ -9,7 +9,8 @@ import {
 	getGitHubRepos,
 	getGitLabRepos,
 	findProject,
-	getAllShopsProjects
+	getAllShopsProjects,
+	getAutoComplete
 } from '../controllers/index.js';
 
 const router = express.Router();
@@ -25,5 +26,6 @@ router.route('/api/get/:shopName').get(findShop);
 router.route('/api/repos/hub/:username').get(getGitHubRepos);
 router.route('/api/repos/lab/:projectId').get(getGitLabRepos);
 router.route('/api/get/:shopName/:projName').get(findProject);
+router.route('/api/autocomplete').get(getAutoComplete);
 
 export default router;

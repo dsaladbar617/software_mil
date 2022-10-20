@@ -2,13 +2,15 @@ import {
 	TextInput,
 	createStyles,
 	Button,
-	useMantineColorScheme
+	useMantineColorScheme,
+	Autocomplete
 } from '@mantine/core';
-import { useState, useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ShopContext } from '../../ShopContext';
 import styles from '../../styles/Header.module.css';
-import { IconSun, IconMoon, IconChevronLeft, IconAnkh } from '@tabler/icons';
+import { IconSun, IconMoon, IconChevronLeft } from '@tabler/icons';
+import axios from 'axios';
 
 // Create a default style to apply to the mantine TextInput
 const useStyles = createStyles(() => ({
@@ -41,18 +43,34 @@ const Header = () => {
 		setters.setSearchValue(e.target.value);
 	};
 
+	const [data, setData] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get('http://localhost:8080/autocomplete')
+			.then((res) => setData(res.data));
+	}, []);
+
 	return (
 		<div className={styles.sticky}>
 			<div className={styles.head_container}>
 				<div className={styles.head}>
 					{
 						// If the url includes the string shop return the back button. Otherwise do not render the back button.
-						location.pathname.includes('shop') ? (
+						location.pathname.includes('shop') ||
+						location.pathname.includes('projects') ? (
 							<Button
 								color="gray"
 								className={styles.back}
 								onClick={() => {
-									nav(-1);
+									console.log(urlArr);
+									if (urlArr[1] === 'projects') {
+										nav(-1);
+									} else {
+										urlArr.pop();
+										let navUrl = urlArr.join('/');
+										nav(navUrl);
+									}
 								}}>
 								{' '}
 								<IconChevronLeft size={18} />{' '}
@@ -64,7 +82,7 @@ const Header = () => {
 						onClick={() => {
 							// Navigate to the homepage and clear the searchValue in the global context.
 							setters.setSearchValue('');
-							nav('/');
+							nav('/shop');
 						}}>
 						{/* Placeholder for icon */}
 						<h1>Sorftwair Shoops</h1>
@@ -85,11 +103,12 @@ const Header = () => {
 						// use urlEnd value to determine if the searchbar will be rendered or not
 						urlEnd === 'shop' || urlEnd === 'projects' ? (
 							<div className={styles.search}>
-								<TextInput
+								<Autocomplete
 									placeholder="Search..."
-									value={values.searchValue}
+									// value={values.searchValue}
 									onChange={handleUserInput}
 									styles={{ root: classes.root, label: classes.label }}
+									data={data}
 								/>
 							</div>
 						) : null

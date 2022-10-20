@@ -19,6 +19,13 @@ const ProjectDetail = () => {
 	const loc = useLocation();
 	const nav = useNavigate();
 	// Deconstruct the selectedProject object from the global context.
+
+	// const {
+	// 	shopName = '',
+	// 	projects = {},
+	// 	shopContact = ''
+	// } = values.selectedProject;
+
 	const { name, short_desc, img } = values.selectedProject;
 	const theme = useMantineTheme();
 	const { classes } = useStyles();
@@ -51,10 +58,17 @@ const ProjectDetail = () => {
 		}
 		// If the selectedProject data is present, assign shop data from global context.
 		else {
-			setCurrentShop({
-				name: values.selectedShop.name,
-				contact: values.selectedShop.contact
-			});
+			if (values.selectedProject.shopName === undefined) {
+				setCurrentShop({
+					name: values.selectedShop.name,
+					contact: values.selectedShop.contact
+				});
+			} else {
+				setCurrentShop({
+					name: values.selectedProject.shopName,
+					contact: values.selectedProject.shopContact
+				});
+			}
 		}
 	}, []);
 
@@ -108,6 +122,7 @@ const ProjectDetail = () => {
 						values.selectedProject.tags.map((tag, index) => (
 							<li key={index} className={styles.tagItem}>
 								<Badge
+									className={styles.badge}
 									onClick={() => {
 										let clickedTag = tag.replace(' ', '%20');
 										nav(`/projects/${clickedTag}`);
