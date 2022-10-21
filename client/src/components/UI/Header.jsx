@@ -40,16 +40,23 @@ const Header = () => {
 
 	// Function used to set the searchValue in the global context.
 	const handleUserInput = (e) => {
-		setters.setSearchValue(e.target.value);
+		// console.log(e);
+		setters.setSearchValue(e);
 	};
 
-	const [data, setData] = useState([]);
+	const [auto, setAuto] = useState([]);
 
 	useEffect(() => {
-		axios
-			.get('http://localhost:8080/autocomplete')
-			.then((res) => setData(res.data));
+		console.log(auto);
+		if (auto.length === 0) {
+			axios.get('http://localhost:8080/api/autocomplete').then((res) => {
+				console.log(res.data);
+				setAuto(res.data);
+			});
+		}
 	}, []);
+
+	// console.log(auto);
 
 	return (
 		<div className={styles.sticky}>
@@ -104,11 +111,13 @@ const Header = () => {
 						urlEnd === 'shop' || urlEnd === 'projects' ? (
 							<div className={styles.search}>
 								<Autocomplete
+									initiallyOpened={false}
 									placeholder="Search..."
-									// value={values.searchValue}
+									value={values.searchValue}
+									limit={3}
 									onChange={handleUserInput}
 									styles={{ root: classes.root, label: classes.label }}
-									data={data}
+									data={auto}
 								/>
 							</div>
 						) : null

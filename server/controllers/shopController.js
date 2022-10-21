@@ -133,20 +133,16 @@ const getAutoComplete = async (req, res) => {
 			lang: term.projects.map((project) => project.lang)
 		};
 	});
-	// console.log(test);
 
 	let finalTest = test.map((item) => Object.values(item)).flat(3);
 
-	let uniq = finalTest.filter((elem, i) => {
-		return finalTest.indexOf(elem) === i;
-	});
+	let caseSens = finalTest.map((item) => item.toLowerCase());
 
-	let final = uniq.map((item) => ({ value: item }));
-	// let set = new Set(finalTest);
+	let result = Array.from(new Set(caseSens));
 
-	// let uniq = [...set];
-
-	// console.log(finalTest);
+	let final = result.map((item) => ({
+		value: `${item.charAt(0).toUpperCase()}${item.slice(1)}`
+	}));
 
 	res.status(200).json(final);
 };
