@@ -1,0 +1,231 @@
+[
+	{
+		"_id": "6331c5c1a81e695297dff57f",
+		"name": "Conjure",
+		"desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+		"projects": [
+			{
+				"name": "Demeter",
+				"tags": [
+					"Javascript",
+					"React",
+					"Html",
+					"Css",
+					"Electron",
+					"Desktop-App",
+					"GPS (Global Positioning System)",
+					"Information",
+					"Data-transfer",
+					"Satellite",
+					"Planes",
+					"Data-Security",
+					"UDP-Traffic(User Datagram Protocol)",
+					"General-Ops"
+				],
+				"lang": ["Javascript", "React", "Html", "Css"],
+				"proj_link": "tbd",
+				"short_desc": "Demeter is a microservice alternative to ACARS. ACARS information is visible to many outside agencies, potentially giving adversaries AMC aircraft positional data. Demeter allows aircraft to disable ACARs in threatened airspaces while continuing to provide secured positional data to mission planners and C2 systems.",
+				"img": "demeter"
+			},
+			{
+				"name": "Soteria",
+				"tags": [
+					"Javascript",
+					"React",
+					"Html",
+					"Css",
+					"Java",
+					"Spring",
+					"Postgress-DB",
+					"Web-App",
+					"Information",
+					"Track-IDF (mortars/rockets, Indirect-fire)",
+					"Ground",
+					"Form-Submition",
+					"Table-Data",
+					"Export-Map"
+				],
+				"lang": ["Javascript", "React", "Html", "Css", "Java", "Spring"],
+				"proj_link": "tbd",
+				"short_desc": "this is a test short description for Soteria",
+				"img": "Soteria"
+			},
+			{
+				"name": "Glass House",
+				"tags": [
+					"Javascript",
+					"Html",
+					"Css",
+					"Ruby",
+					"Shell",
+					"React",
+					"Material-UI",
+					"Web-App",
+					"Data Tracking",
+					"Tickets",
+					"Form-Submition",
+					"Track people",
+					"Time management",
+					"Profiles",
+					"Atomic design"
+				],
+				"lang": ["Javascript", "Html", "Css", "Ruby", "Shell", "React"],
+				"proj_link": "tbd",
+				"short_desc": "this is a test short description for Glass-House",
+				"img": "glasshouse"
+			},
+			{
+				"name": "Icarus",
+				"tags": [
+					"Swift UI",
+					"IOS",
+					"Mission planning",
+					"Maps",
+					"Helicopter",
+					"Waypoints",
+					"Routes",
+					"CSAR (combat search and rescue)",
+					"Overlays",
+					"Threat mapping",
+					"Distance measuring"
+				],
+				"lang": ["Swift UI"],
+				"proj_link": "tbd",
+				"short_desc": "Icarus is a mission planning interface for the Electronic Flight Bag (EFB) that CSAR (HH-60G) operators can use in tactical environments where commercial flight planning software is insufficient. It eliminates aircrew's reliance on paper maps by utilizing iOS-compatible mapping software and includes limited tools and capabilities currently available to operators in the Joint Mission Planning System (JMPS).",
+				"img": "Icarus"
+			},
+			{
+				"name": "Mercury",
+				"tags": [
+					"React",
+					"Javascript",
+					"Express",
+					"Mysql",
+					"Graphql",
+					"Shell",
+					"Web-app",
+					"Form-submition",
+					"Funeral",
+					"Honor-guard",
+					"Track requests"
+				],
+				"lang": ["React", "Javascript", "Express"],
+				"proj_link": "tbd",
+				"short_desc": "this is a test short description for Mercury",
+				"img": "mercury"
+			},
+			{
+				"name": "Tether",
+				"tags": [
+					"Javascript",
+					"Web-app",
+					"UDL (unified data library)",
+					"GPS (global positioning system)",
+					"Flight-data",
+					"Data-collection",
+					"Mission planning",
+					"Information display",
+					"Planes",
+					"AMC (Air Mobility Command)"
+				],
+				"lang": ["Javascript"],
+				"proj_link": "tbd",
+				"short_desc": "Tether is a microservice that linked the (MEIS) databases with the Unified Data Library (UDL) for the purposes of transporting AMC aircraft positional data. The MEIS was only visible to AMC mission planners, so Tether provided that data to nine additional COCOMS. Tether allowed mission planners to coordinate sorties and refueling operations with other aircraft platforms aligned to MAJCOMs outside of AMC.",
+				"img": "tether"
+			},
+			{
+				"name": "Odyssey",
+				"tags": [
+					"Kotlin",
+					"Android",
+					"XMl (CRD)",
+					"arcGIS",
+					"In-Development",
+					"Map",
+					"Plot-map",
+					"Routes",
+					"Planes",
+					"Visual mapping",
+					"PTP mapping(point to point)",
+					"Navigation",
+					"Information display",
+					"Mission planning"
+				],
+				"lang": ["Kotlin"],
+				"proj_link": "tbd",
+				"short_desc": "Odyssey is a dynamic mission planning interface for the Electronic Knee Board (EKB) that mobility air crews can use in disconnected, austere environments where commercial flight planning software is inoperable. It increases aircrew situational awareness by utilizing ArcGIS mapping technology and limited capabilities currently available to operators through the Joint Mission Planning System (JMPS).",
+				"img": "odyssey"
+			},
+			{
+				"name": "Thoth",
+				"tags": [
+					"Javascript",
+					"React",
+					"Css",
+					"Html",
+					"Mantine",
+					"MongoDB",
+					"Web-App",
+					"Software-Tracking",
+					"Information",
+					"Data-Consolidation",
+					"Software-Factory-Library"
+				],
+				"lang": ["Javascript", "React", "Css", "Html"],
+				"proj_link": "tbd",
+				"short_desc": "this is the best project in Conjure history",
+				"img": "thoth"
+			}
+		],
+		"__v": 0,
+		"location": "Scott AFB, Illinois",
+		"img": "Conjure",
+		"contact": "aflcmc.hbmc.conjure@us.af.mil"
+	},
+	{
+		"_id": "633af5f0af26f8d44189b8a5",
+		"name": "Bespin",
+		"desc": "Not as good as Conjure",
+		"projects": [
+			{
+				"name": "draft query",
+				"tags": ["react", "query", "draft"],
+				"lang": ["javascript"],
+				"proj_link": "https://github.com/dsaladbar617/draft_query",
+				"short_desc": "this is a bespins project short description",
+				"img": "bespin"
+			},
+			{
+				"name": "draft app",
+				"tags": ["react", "fetch", "draft"],
+				"lang": ["javascript"],
+				"proj_link": "https://github.com/dsaladbar617/draft_app",
+				"short_desc": "this is a bespins project short description",
+				"img": "bespin"
+			}
+		],
+		"img": "bespin",
+		"location": "Alabamer",
+		"__v": 0,
+		"contact": "bespin@us.af.mil"
+	},
+	{
+		"_id": "633af6c9af26f8d44189b8a8",
+		"name": "Kessel Run",
+		"desc": "Not as good as Bespin",
+		"projects": [
+			{
+				"name": "smartsheets",
+				"tags": ["sheets", "data"],
+				"lang": ["react", "javascript"],
+				"proj_link": "https://github.com/dsaladbar617/smartsheets",
+				"short_desc": "this is smartsheets",
+				"img": "kesselrun"
+			}
+		],
+		"img": "kesselrun",
+		"location": "Boston",
+		"__v": 0,
+		"contact": "kr@us.af.mil"
+	}
+]
