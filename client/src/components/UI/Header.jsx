@@ -49,7 +49,7 @@ const Header = () => {
 	useEffect(() => {
 		console.log(auto);
 		if (auto.length === 0) {
-			axios.get('http://localhost:8080/api/autocomplete').then((res) => {
+			axios.get('/api/autocomplete').then((res) => {
 				console.log(res.data);
 				setAuto(res.data);
 			});

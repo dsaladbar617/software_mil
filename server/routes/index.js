@@ -12,6 +12,9 @@ import {
 	getAllShopsProjects,
 	getAutoComplete
 } from '../controllers/index.js';
+import path from 'path';
+
+var env = process.env.NODE_ENV || 'development';
 
 const router = express.Router();
 
@@ -27,5 +30,11 @@ router.route('/api/repos/hub/:username').get(getGitHubRepos);
 router.route('/api/repos/lab/:projectId').get(getGitLabRepos);
 router.route('/api/get/:shopName/:projName').get(findProject);
 router.route('/api/autocomplete').get(getAutoComplete);
+
+if (env.toLowerCase() == 'production') {
+  router.get('*', async (req, res, next) => {
+    res.sendFile(path.join('/server', 'public', 'index.html'));
+  });
+}
 
 export default router;
