@@ -2,18 +2,20 @@ FROM node:19
 
 ENV NODE_ENV=production
 
-WORKDIR /
+RUN mkdir -p /app/software_mil-client
 
-COPY . client
+WORKDIR /app/software_mil-client
 
-WORKDIR /client
+COPY package.json /app/software_mil-client
 
-EXPOSE 3000
+COPY package-lock.json /app/software_mil-client
 
 RUN npm install
 
-RUN npm run build
+COPY . /app/software_mil-client
 
-RUN npm install -g serve
+CMD ["npm" ,"run", "start"]
 
-RUN serve -s build
+# RUN npm install -g serve
+
+# RUN serve -s build &
