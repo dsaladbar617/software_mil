@@ -1,16 +1,18 @@
-version: "3.9"
+version: '3.9'
 services:
   mongodb:
     build: ./mongo
     restart: always
     ports:
       - 27017:27017
+    # command: -c "chmod a+x ./data/db && ./data/db -t 150 -h ..."
     volumes:
       - ./mongo/data:/data/db
     environment:
-      - MONGO_INITDB_ROOT_USERNAME=admin
-      - MONGO_INITDB_ROOT_PASSWORD=password
+      # - MONGO_INITDB_ROOT_USERNAME=admin
+      # - MONGO_INITDB_ROOT_PASSWORD=password
       - MONGO_INITDB_DATABASE=Thoth
+
   server:
     build: ./server
     expose:
