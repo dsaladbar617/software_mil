@@ -238,3 +238,113 @@ db.shops.insertOne({
   __v: 0,
   contact: 'kr@us.af.mil',
 });
+db.shops.insertOne({
+  _id: '',
+  name: 'Army Software Factory',
+  desc: 'The Army Software Factory (ASWF) is an Army Futures Command unit that enables Soldiers to become software professionals. We are prototyping a future force design with Soldier-led agile application teams while demonstrating a strategic joint capability for 2040. We find hidden tech talent in the Army and build proficiency and mastery in emerging technologies and processes. This results in an upskilled technical force that will enable the Army to become more data-centric and conduct operations in contested environments. Our process already resulted in applications and tools used by over 20,000 Soldiers. Every six months, we welcome cohorts of 25 and immerse them in fields of software design and development. With over 100 participants as of October 2022, ASWF exposes Soldiers and select Department of the Army (DA) Civilians to industry best practices in the tech hub of Austin, Texas.',
+  projects: [
+    {
+      name: 'MySquad',
+      tags: ['Mobile'],
+      lang: ['Kotlin', 'Spring'],
+      proj_link: 'https://mysquad.swf.army.mil/landing',
+      short_desc:
+        'MySquad is an opportunity for leaders to create more effective units Squad organization, counseling and readiness are just a few of the features that MySquad provides.',
+      img: 'mysquad',
+    },
+    {
+      name: 'PMCS',
+      tags: ['Kermit'],
+      lang: ['Damn boi he thicc'],
+      proj_link: 'https://pmcs.swf.army.mil',
+      short_desc:
+        'The PMCS application gives Soldiers an opportunity to view entire technical manuals or the PMCS checklist in order to conduct timely and accurate maintenance. The app covers over 600 types of rolling stock equipment with more being added regularly. The ability for operators to view equipment status and faults is currently in progress.',
+      img: 'pmcs',
+    },
+    {
+      name: 'Carrera',
+      tags: ['MLP'],
+      lang: ['Doge'],
+      proj_link: 'https://carrera.swf.army.mil',
+      short_desc:
+        'Carrera allows National Guard and Reserve Soldiers to browse and apply to open Active Duty positions from anywhere at any time, removing the need to commute to an armory. Carrera provides a modern and accessible tool that can help fill critical positions around the world.',
+      img: 'carrera',
+    },
+    {
+      name: 'Blast Radius',
+      tags: ['Big Chungus'],
+      lang: ['Ugandan Knuckles'],
+      proj_link: 'https://blastradius.swf.army.mil',
+      short_desc:
+        'Blast Radius gives ammunition handlers the ability to reduce site planning time from an average of 80 hours down to ~40 minutes. Blast Radius meets USATCES standards by calculating safe distances and compatibility in accordance with DoD regulations for above-ground storage of ammunition.',
+      img: 'blastradius',
+    },
+    {
+      name: 'eTRIC',
+      tags: ['Pepe'],
+      lang: ['Dat Boi'],
+      proj_link: 'https://etric.swf.army.mil',
+      short_desc:
+        'eTRIC supports data visualization for resource allocations with a user-friendly tool. Currently being used by organizations dependent on 25ID for land allocation easily overcome land limitations. This can ensure Soldiers have the right training opportunities and promote mission readiness.',
+      img: 'etric',
+    },
+    {
+      name: 'AirSync',
+      tags: ['Press F'],
+      lang: ['Harambe'],
+      proj_link: 'https://airsync.swf.army.mil',
+      short_desc:
+        'AirSync is a collaborative mission planning tool for air assault operations per the Gold Book standard. AirSync aims to increase planning efficiency and reduce risk to mission, personnel, and equipment. Future capabilities of AirSync in the works include airborne operations and real-time modification of aircraft manifests.',
+      img: 'airsync',
+    },
+    {
+      name: 'Marketeer',
+      tags: ['Omae Wa Mou Shindeiru'],
+      lang: ['Belle Delphine'],
+      proj_link: 'https://marketresearch.swf.army.mil',
+      short_desc:
+        'Marketeer is a data aggregation and research tool for the market research component of the contracting process. This tool can reduce program acquisition lead time (PALT) and aid in FAR compliance.',
+      img: 'marketeer',
+    },
+    {
+      name: 'Avi-X',
+      tags: ['Grumpy Cat'],
+      lang: ['Nyan Cat'],
+      proj_link: 'https://avix.swf.army.mil',
+      short_desc:
+        'Avi-X provides tool room management enhancements for units to achieve increased readiness, time and cost savings. Avi-X enables tool room supervisors to spend 50% less time referencing tool locations and statuses within their inventories, resulting in better asset management.',
+      img: 'avix',
+    },
+    {
+      name: 'CASL Picker',
+      tags: ['GigaChad'],
+      lang: ['First World Problems'],
+      proj_link: 'https://armyfirst.apps.platform.futures.army.mil',
+      short_desc:
+        'Common Authorized Stockage Listing (CASL) Picker optimizes the pick process at Supply Support Activities (SSA) by sorting the GCSS-Army generated pick tickets. CASL Picker organizes GCSS-Army outputs in accordance with the user’s preferences and generates a new PDF so units can print, quickly action the sorted list, eliminate the manual sort process, and speed-up order fulfillment.',
+      img: 'caslpicker',
+    },
+    {
+      name: 'FireWire',
+      tags: ['Stonks'],
+      lang: ['Copypasta'],
+      proj_link: 'https://firewire.swf.army.mil',
+      short_desc:
+        'FireWire is a web-based mobile and desktop application reporting tool that can modernize the indirect fire training experience at the National Training Center (NTC) by enabling data-driven analysis for the fire support community. FireWire enables Observer, Coach, Trainers (OC/Ts) to capture data at the point of creation and every echelon of the fire mission process for data-driven unit coaching and After Action Reviews, resulting in potential increased value for rotational training units and improved readiness.',
+      img: 'firewire',
+    },
+    {
+      name: 'SRCerer',
+      tags: ['Shrek is love'],
+      lang: ['Ligma'],
+      proj_link: 'https://armyfuturescommand.com/software-factory',
+      short_desc:
+        'SRCerer (pronounced Sorcerer) is a product that provides a Path-to-Production (P2P) for Army software development teams that can meet supported cloud native web application design patterns. It is the default P2P used by all ASWF teams and is also used by development teams from the Software Engineering Center (SEC), DEVCOM, and PEO EIS. The SRCerer product offers CI/CD pipelines and an accredited IL4 Kubernetes-based platform that leverages continuous Risk Management Framework (cRMF) through the Army CIO-approved DevSecOps Playbook.',
+      img: 'srcerer',
+    },
+  ],
+  img: 'armysoftwarefactory',
+  location: 'Austin, TX',
+  __v: 0,
+  contact: 'usarmy.austin-tx.futures-cmd.mbx.afc-hq-software-factory@mail.mil',
+});
