@@ -4,7 +4,6 @@ let db = connect('mongodb://localhost/Thoth');
 
 db.shops.drop();
 db.shops.insertOne({
-  _id: '6331c5c1a81e695297dff57f',
   name: 'Conjure',
   desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
   projects: [
@@ -193,7 +192,6 @@ db.shops.insertOne({
   contact: 'aflcmc.hbmc.conjure@us.af.mil',
 });
 db.shops.insertOne({
-  _id: '633af5f0af26f8d44189b8a5',
   name: 'Bespin',
   desc: 'Not as good as Conjure',
   projects: [
@@ -220,7 +218,6 @@ db.shops.insertOne({
   contact: 'bespin@us.af.mil',
 });
 db.shops.insertOne({
-  _id: '633af6c9af26f8d44189b8a8',
   name: 'Kessel Run',
   desc: 'Not as good as Bespin',
   projects: [
@@ -239,7 +236,6 @@ db.shops.insertOne({
   contact: 'kr@us.af.mil',
 });
 db.shops.insertOne({
-  _id: '',
   name: 'Army Software Factory',
   desc: 'The Army Software Factory (ASWF) is an Army Futures Command unit that enables Soldiers to become software professionals. We are prototyping a future force design with Soldier-led agile application teams while demonstrating a strategic joint capability for 2040. We find hidden tech talent in the Army and build proficiency and mastery in emerging technologies and processes. This results in an upskilled technical force that will enable the Army to become more data-centric and conduct operations in contested environments. Our process already resulted in applications and tools used by over 20,000 Soldiers. Every six months, we welcome cohorts of 25 and immerse them in fields of software design and development. With over 100 participants as of October 2022, ASWF exposes Soldiers and select Department of the Army (DA) Civilians to industry best practices in the tech hub of Austin, Texas.',
   projects: [
