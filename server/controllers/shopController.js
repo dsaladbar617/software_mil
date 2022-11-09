@@ -9,6 +9,12 @@ const addShop = (req, res) => {
 	res.status(200).send(`you have added ${data.name}`);
 };
 
+const addAllShops = (req, res) => {
+	let data = req.body;
+	shops.insertMany(data);
+	res.status(201).send('you have updated the db');
+};
+
 const updateShop = async (req, res) => {
 	// Get the data from the request body that will be used to update the correct shop in the database
 	let data = req.body;
@@ -149,6 +155,7 @@ const getAutoComplete = async (req, res) => {
 
 export {
 	addShop,
+	addAllShops,
 	getShops,
 	updateShop,
 	removeShop,
