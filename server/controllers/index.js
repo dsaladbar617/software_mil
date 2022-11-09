@@ -1,5 +1,6 @@
 import {
 	addShop,
+	addAllShops,
 	getShops,
 	updateShop,
 	removeShop,
@@ -13,6 +14,7 @@ import { getGitHubRepos, getGitLabRepos } from './repoController.js';
 
 export {
 	addShop,
+	addAllShops,
 	getShops,
 	updateShop,
 	removeShop,
