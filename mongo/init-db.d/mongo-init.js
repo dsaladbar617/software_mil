@@ -1,6 +1,4 @@
-let db = connect('mongodb://localhost/Thoth');
-
-// db.auth('admin', 'password');
+db = db.getSiblingDB('Thoth');
 
 db.shops.drop();
 db.shops.insertOne({
