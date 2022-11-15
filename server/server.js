@@ -8,7 +8,7 @@ var env = process.env.NODE_ENV || 'development';
 
 // Create the server instance and set the port to 8080
 const server = express();
-const port = 6969;
+const port = 8080;
 // MiddleWare
 server.use(express.json());
 server.use(cors());
