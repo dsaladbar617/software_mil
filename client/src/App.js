@@ -11,8 +11,6 @@ import ProjectDetail from './components/Project/ProjectDetail';
 import HomePage from './components/UI/HomePage';
 import AllProjects from './components/Project/AllProjects';
 
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
 function App() {
 	const [colorScheme, setColorScheme] = useLocalStorage({
 		key: 'mantine-color-scheme',

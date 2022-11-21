@@ -342,3 +342,78 @@ db.shops.insertOne({
   __v: 0,
   contact: 'usarmy.austin-tx.futures-cmd.mbx.afc-hq-software-factory@mail.mil',
 });
+db.shops.insertOne({
+  name: 'Scorpion Camp',
+  desc: 'Scorpion CAMP directly supports the 552 ACW with mission support software for both web and Electronic Flight Bags. Additionally, we are focused on providing Air Force Mission Defense Teams with tailored software capabilities in order to detect, defend, and deter cyber threats across high-value weapons systems.',
+  projects: [
+    {
+      name: 'ODS',
+      tags: [
+        'reporting',
+        'anonymous',
+        'commander-response',
+        'feedback',
+        'cac-less',
+      ],
+      lang: ['angular', 'typeScript', 'nestjs', 'prisma', 'graphql'],
+      proj_link: 'tbd',
+      short_desc:
+        'Anonymous Reporting App to allow members to report instances of discrimination to commanders with the ability to get updates on how the instance was handled.',
+      img: 'scorpioncamp',
+    },
+    {
+      name: 'Waypoint',
+      tags: ['tracking', 'in-progress'],
+      lang: ['angular', 'typeScript', 'nestjs', 'prisma', 'graphql'],
+      proj_link: 'tbd',
+      short_desc: 'readiness tracking (who tf knows)',
+      img: 'scorpioncamp',
+    },
+    {
+      name: 'Pythos',
+      tags: [
+        'apple',
+        'mobile',
+        'electronic flight bag',
+        'efb',
+        'awacs',
+        'consolidation',
+      ],
+      lang: ['c#', 'xamarin forms'],
+      proj_link: 'tbd',
+      short_desc:
+        'Folder application that contains forms that were digitized for use on EFBs. Pythos currently has 2 forms, PurpleDot and Form49.',
+      img: 'pythos',
+    },
+    {
+      name: 'PurpleDot',
+      tags: [
+        'form',
+        'apple',
+        'efb',
+        'electronic flight bag',
+        'legacy integration',
+        'scantron',
+        'awacs',
+      ],
+      lang: ['c#', 'xamarin forms'],
+      proj_link: 'tbd',
+      short_desc:
+        'Digitized version of AFTO 117 scantron for use on an EFB, started out as a solo application, added to Pythos when Pythos was finished.',
+      img: 'purpledot',
+    },
+    {
+      name: 'Form49',
+      tags: ['form', 'apple', 'efb', 'electronic flight bag', 'awacs'],
+      lang: ['c#', 'xamarin forms'],
+      proj_link: 'tbd',
+      short_desc:
+        'Digitized version of the paper Form 49, also to be used on an EFB',
+      img: 'form49',
+    },
+  ],
+  img: 'scorpioncamp',
+  location: 'Tinker AFB, OK',
+  __v: 0,
+  contact: '552ACNS.DOUP.ScorpionCAMP@us.af.mil',
+});
