@@ -62,6 +62,18 @@ const Header = () => {
 	return (
 		<div className={styles.sticky}>
 			<div className={styles.head_container}>
+				<div className={styles.themeToggle}>
+					<div
+						className={styles.title}
+						onClick={() => {
+							// Navigate to the homepage and clear the searchValue in the global context.
+							setters.setSearchValue('');
+							nav('/shop');
+						}}>
+						{/* Placeholder for icon */}
+						<h1 style={{ color: 'white' }}>DoD Software Factories</h1>
+					</div>
+				</div>
 				<div className={styles.head}>
 					{
 						// If the url includes the string shop return the back button. Otherwise do not render the back button.
@@ -111,18 +123,6 @@ const Header = () => {
 							<IconMoon size={18} />
 						)}
 					</Button>
-				</div>
-				<div className={styles.themeToggle}>
-					<div
-						className={styles.title}
-						onClick={() => {
-							// Navigate to the homepage and clear the searchValue in the global context.
-							setters.setSearchValue('');
-							nav('/shop');
-						}}>
-						{/* Placeholder for icon */}
-						<h1 style={{ color: 'white' }}>DoD Software Factories</h1>
-					</div>
 				</div>
 			</div>
 		</div>
