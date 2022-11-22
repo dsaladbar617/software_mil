@@ -1,27 +1,14 @@
-import {
-	Button,
-	Card,
-	Text,
-	useMantineTheme,
-	createStyles
-} from '@mantine/core';
+import { Button, Card, Text, useMantineTheme } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../styles/HomePage.module.css';
-
-const useStyles = createStyles((theme) => ({
-	root: {
-		backgroundColor: theme.colors.gray
-	}
-}));
 
 const HomePage = () => {
 	const nav = useNavigate();
 	const theme = useMantineTheme();
-	const { classes } = useStyles();
 
 	return (
 		<>
-			<Card style={{ root: classes.root }} className={styles.container}>
+			<Card className={styles.container}>
 				<Card.Section className={styles.section}>
 					<Text size="xl" className={styles.textBox}>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

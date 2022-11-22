@@ -25,7 +25,32 @@ function App() {
 			colorScheme={colorScheme}
 			toggleColorScheme={toggleColorScheme}>
 			<MantineProvider
-				theme={{ colorScheme }}
+				theme={{
+					components: {
+						Card: {
+							styles: (theme) => ({
+								root: {
+									backgroundColor: theme.colors.gray
+								}
+							})
+						}
+					},
+					colorScheme: colorScheme,
+					colors: {
+						dark: [
+							'#d5d7e0', // color dark mode
+							'#acaebf',
+							'#8c8fa3',
+							'#666980',
+							'#4d4f66',
+							'#34354a',
+							'#2b2c3d',
+							'#1d1e30', // background color dark mode
+							'#0c0d21',
+							'#01010a'
+						]
+					}
+				}}
 				withGlobalStyles
 				withCSSVariables
 				withNormalizeCSS>

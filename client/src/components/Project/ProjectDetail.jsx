@@ -4,15 +4,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import styles from '../../styles/ShopDetail.module.css';
 import axios from 'axios';
-import { Card, useMantineTheme, createStyles, Badge } from '@mantine/core';
+import { Card, useMantineTheme, Badge } from '@mantine/core';
 import toast, { Toaster } from 'react-hot-toast';
-
-// Sets the background color through mantine depending on light/dark mode.
-const useStyles = createStyles((theme) => ({
-	root: {
-		backgroundColor: theme.colors.gray
-	}
-}));
 
 const ProjectDetail = () => {
 	const { values, setters } = useContext(ShopContext);
@@ -28,7 +21,6 @@ const ProjectDetail = () => {
 
 	const { name, short_desc, img } = values.selectedProject;
 	const theme = useMantineTheme();
-	const { classes } = useStyles();
 	// Format used to display shop name and contact.
 	const [currentShop, setCurrentShop] = useState({
 		name: '',
@@ -89,7 +81,7 @@ const ProjectDetail = () => {
 
 	return (
 		<div className={styles.scroll}>
-			<Card style={{ root: classes.root }} className={styles.allcontain}>
+			<Card className={styles.allcontain}>
 				<h1 className={styles.name}>{name}</h1>
 				<img src={`/${img}.png`} alt="Shop Logo" />
 				<div className={styles.projectData}>
@@ -107,13 +99,13 @@ const ProjectDetail = () => {
 					<Toaster />
 				</div>
 			</Card>
-			<Card style={{ root: classes.root }} className={styles.desc_container}>
+			<Card className={styles.desc_container}>
 				<div>
 					<h3>{`Description:`}</h3>
 					<p>{short_desc}</p>
 				</div>
 			</Card>
-			<Card style={{ root: classes.root }} className={styles.tags}>
+			<Card className={styles.tags}>
 				<ul className={styles.tagList}>
 					{
 						// Create list of tags from the project data.

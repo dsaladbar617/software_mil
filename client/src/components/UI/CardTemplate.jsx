@@ -1,21 +1,13 @@
-import { Card, Image, createStyles, Box } from '@mantine/core';
+import { Card, Image, Box } from '@mantine/core';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { ShopContext } from '../../ShopContext';
 import styles from '../../styles/TestCard.module.css';
 
-const useStyles = createStyles((theme) => ({
-	root: {
-		backgroundColor: theme.colors.gray,
-		color: theme.black
-	}
-}));
-
 const CardTemplate = ({ data, shopName = '' }) => {
 	const location = useLocation();
 	const { values, setters } = useContext(ShopContext);
 	const nav = useNavigate();
-	const { classes } = useStyles();
 	// Deconstruct the data prop to get the name and img property
 	const { name, img } = data;
 	// Get the value of the url
@@ -28,7 +20,6 @@ const CardTemplate = ({ data, shopName = '' }) => {
 			<Card
 				onClick={() => {
 					// Depending on users location navigate to the correct details page and set the correct shop/project in the global context.
-					console.log(lastUrl);
 					if (lastUrl === 'projects') {
 						setters.setSelectedProject(data);
 						nav(`${url.join('/')}/${name}`);
@@ -42,8 +33,7 @@ const CardTemplate = ({ data, shopName = '' }) => {
 				}}
 				shadow="xl"
 				radius="lg"
-				withBorder
-				style={{ root: classes.root }}>
+				withBorder>
 				<Box
 					className={styles.ar_image}
 					sx={{
