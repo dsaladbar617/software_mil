@@ -1,23 +1,23 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { useLocation } from "react-router-dom";
-import CardList from "../UI/CardList";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useLocation } from 'react-router-dom';
+import CardList from '../UI/CardList';
 const AllProjects = () => {
-  const location = useLocation();
+	const location = useLocation();
 
-  const [cards, setCards] = useState([]);
+	const [cards, setCards] = useState([]);
 
-  useEffect(() => {
-    const url = location.pathname.split("/");
-    const query = url[url.length - 1];
-    axios.get(`/api/getprojects/${query}`).then((res) => {
-      setCards(res.data.flat());
-    });
-  }, []);
+	useEffect(() => {
+		const url = location.pathname.split('/');
+		const query = url[url.length - 1];
+		axios.get(`/api/getprojects/${query}`).then((res) => {
+			setCards(res.data.flat());
+		});
+	}, []);
 
-  // Pass data along to cards to navigate to correct project detail page
+	// Pass data along to cards to navigate to correct project detail page
 
-  return <CardList cards={cards} />;
+	return <CardList cards={cards} />;
 };
 
 export default AllProjects;

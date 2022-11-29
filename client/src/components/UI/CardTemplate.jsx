@@ -6,7 +6,7 @@ import styles from '../../styles/TestCard.module.css';
 
 const CardTemplate = ({ data, shopName = '' }) => {
 	const location = useLocation();
-	const { values, setters } = useContext(ShopContext);
+	const { setters } = useContext(ShopContext);
 	const nav = useNavigate();
 	// Deconstruct the data prop to get the name and img property
 	const { name, img } = data;
