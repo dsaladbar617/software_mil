@@ -1,15 +1,10 @@
 import { render, screen } from '@testing-library/react';
-import AllProjects from './AllProjects';
+import CardList from './CardList';
+// import React from 'react';
 import { ShopContext } from '../../ShopContext';
+import '@testing-library/jest-dom';
 
-jest.mock('react-router-dom', () => ({
-	...jest.requireActual('react-router-dom'),
-	useLocation: () => ({
-		pathname: 'http://localhost:3000/shop'
-	})
-}));
-
-let testObj = {
+let mockObj = {
 	values: [
 		{
 			_id: '633af6c9af26f8d44189b8a8',
@@ -55,16 +50,15 @@ let testObj = {
 const wrapper = ({ children }) => (
 	<ShopContext.Provider
 		value={{
-			testObj
+			mockObj
 		}}>
 		{children}
 	</ShopContext.Provider>
 );
 
-test('render the list', () => {
-	render(<AllProjects />, { wrapper });
-
-	let cards = screen.getAllByRole('list');
-
-	expect(cards).toHaveLength(1);
+test('render the card list', () => {
+	render(<CardList />, { wrapper });
+	let cards = screen.getAllByRole('listitem');
+	console.log(cards);
+	expect(cards).toHaveLength(2);
 });

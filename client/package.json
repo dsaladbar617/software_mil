@@ -47,6 +47,7 @@
   },
   "proxy": "http://server:8080",
   "devDependencies": {
+    "cypress": "^11.2.0",
     "identity-obj-proxy": "^3.0.0"
   }
 }

@@ -12,7 +12,7 @@ const CardList = ({ cards }) => {
 		return (
 			items
 				// Return only the cards that match the searchValue from context
-				.filter((card) => {
+				?.filter((card) => {
 					// Get all values from each object in the array
 					let searchQuery = Object.values(card)
 						// Check each of the values to see if it is an array
